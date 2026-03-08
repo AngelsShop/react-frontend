@@ -1,5 +1,6 @@
 import { categories } from "data/categories";
 import CategoryCard from "~/components/CategoryCard";
+import Container from "~/components/Container";
 import Header from "~/components/Header";
 import Newsletter from "~/components/Newsletter";
 
@@ -24,19 +25,23 @@ export default function HomePage() {
         </div>
       </section>
       <section>
-        <h2 className="mb-12">Категории</h2>
-        <div className="flex gap-4">
-          {categories.map((category) => (
-            <CategoryCard
-              key={category.id}
-              title={category.title}
-              image={category.image}
-            />
-          ))}
-        </div>
+        <Container>
+          <h2 className="mb-12">Категории</h2>
+          <div className="flex gap-4">
+            {categories.map((category) => (
+              <CategoryCard
+                key={category.id}
+                title={category.title}
+                image={category.image}
+              />
+            ))}
+          </div>
+        </Container>
       </section>
       <section>
-        <Newsletter />
+        <Container>
+          <Newsletter />
+        </Container>
       </section>
     </div>
   );
