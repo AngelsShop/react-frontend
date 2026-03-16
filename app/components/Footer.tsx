@@ -19,6 +19,7 @@ export default function Footer() {
       [&_div]:w-3xs
       [&_a]:text-base 
       [&_a]:text-[#252525]
+      [&_h3]:uppercase
       "
         >
           <div>

@@ -6,6 +6,7 @@ export default [
   route("authorization", "routes/authorization.tsx"),
   route("cart", "routes/cart.tsx"),
   route("catalog", "routes/catalog.tsx"),
+  route("catalog/:id", "routes/info-card-product.tsx"),
   route("contacts", "routes/contacts.tsx"),
   route("favorites", "routes/favorites.tsx"),
   route("personal", "routes/personal.tsx"),

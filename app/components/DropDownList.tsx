@@ -1,6 +1,5 @@
 import type { FilterProps } from "data/categories";
 import { useSelect, useTagGroup } from "downshift";
-import { useState } from "react";
 
 type PropsDropDownList = {
   filter: FilterProps;

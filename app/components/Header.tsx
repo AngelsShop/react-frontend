@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import Container from "./Container";
 import { useEffect, useState } from "react";
 
@@ -50,9 +50,9 @@ export default function Header() {
             <a href="">
               <img src="/images/heart.svg" alt="" />
             </a>
-            <a href="">
+            <NavLink to="/cart">
               <img src="/images/cart.svg" alt="" />
-            </a>
+            </NavLink>
           </div>
         </div>
       </Container>

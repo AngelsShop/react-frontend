@@ -1,6 +1,6 @@
 import Container from "~/components/Container";
 
-export default function PayDeliveryPage() {
+export default function TermsOfReturn() {
   return (
     <section>
       <Container>

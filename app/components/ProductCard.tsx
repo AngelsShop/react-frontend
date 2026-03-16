@@ -1,4 +1,7 @@
 import type { ProductCardProps } from "data/categories";
+import { NavLink } from "react-router";
+import ColorJacket from "./ColorJacket";
+import Favourite from "./Favourite";
 
 type Props = {
   product: ProductCardProps;
@@ -6,15 +9,19 @@ type Props = {
 
 export default function ProductCard({ product }: Props) {
   return (
-    <div className="flex flex-col items-center">
-      <img src={product.image} alt="" />
-      <div className="relative flex flex-col items-center">
+    <div className="relative flex flex-col items-center gap-4">
+      <Favourite isFavorite={product.isFavorite}></Favourite>
+      <NavLink to={`/catalog/${product.id}`}>
+        <img src={product.image} alt="" />
+      </NavLink>
+      <div className="relative flex flex-col items-center gap-1">
         <span>{product.title}</span>
         <span className="font-bold">{`${product.price} ${product.currency}`}</span>
         <span className="text-[#252525]/50">{product.sizes.join(" ")}</span>
         {product.isNew && (
           <span className="absolute -right-10 text-[#E0BEA2]">new</span>
         )}
+        <ColorJacket colors={product.colors} size="small"></ColorJacket>
       </div>
     </div>
   );

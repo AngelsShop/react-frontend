@@ -9,7 +9,7 @@ export default function CatalogPage() {
     <section>
       <Container>
         <div className="flex mt-28 gap-x-7">
-          <div className="flex flex-col gap-y-5 p-1 h-min w-max">
+          <div className="flex flex-col gap-y-5 h-min w-max">
             {categoriesCatalog.map((categoryCatalog) => {
               return <Link to="/">{categoryCatalog.title}</Link>;
             })}
