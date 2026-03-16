@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import Button from "~/components/Button";
 import Container from "~/components/Container";
@@ -5,6 +6,17 @@ import Input from "~/components/Input";
 import RadioButton from "~/components/RadioButton";
 
 export default function Cart() {
+  const [orderDetails, setOrderDetails] = useState({
+    name: "",
+    lastName: "",
+    email: "",
+    telephone: "",
+  });
+
+  useEffect(() => {
+    console.log(orderDetails);
+  }, [orderDetails]);
+
   return (
     <div className="mt-28 flex flex-col gap-y-16">
       <section>
@@ -21,10 +33,47 @@ export default function Cart() {
             <div className="w-full flex flex-col gap-5">
               <h3>Оформление заказа</h3>
               <div className="grid grid-cols-2 gap-5">
-                <Input placeholder="Ваше имя*" required></Input>
-                <Input placeholder="Ваша фамилия*"></Input>
-                <Input placeholder="Ваш e-mail*"></Input>
-                <Input placeholder="Ваш телефон*"></Input>
+                <Input
+                  value={orderDetails.name}
+                  onChange={(e) =>
+                    setOrderDetails((prev) => ({
+                      ...prev,
+                      name: e.target.value,
+                    }))
+                  }
+                  placeholder="Ваше имя*"
+                  required
+                ></Input>
+                <Input
+                  value={orderDetails.lastName}
+                  onChange={(e) =>
+                    setOrderDetails((prev) => ({
+                      ...prev,
+                      lastName: e.target.value,
+                    }))
+                  }
+                  placeholder="Ваша фамилия*"
+                ></Input>
+                <Input
+                  value={orderDetails.email}
+                  onChange={(e) =>
+                    setOrderDetails((prev) => ({
+                      ...prev,
+                      email: e.target.value,
+                    }))
+                  }
+                  placeholder="Ваш e-mail*"
+                ></Input>
+                <Input
+                  value={orderDetails.telephone}
+                  onChange={(e) =>
+                    setOrderDetails((prev) => ({
+                      ...prev,
+                      telephone: e.target.value,
+                    }))
+                  }
+                  placeholder="Ваш телефон*"
+                ></Input>
               </div>
               <div className="grid grid-cols-2 gap-5">
                 <div className="flex flex-col gap-5">
@@ -32,11 +81,11 @@ export default function Cart() {
                   <div className="flex flex-col gap-5">
                     <RadioButton
                       value="Самовывоз"
-                      name="domestic delivery"
+                      name=" delivery"
                     ></RadioButton>
                     <RadioButton
                       value="Почтой России"
-                      name="domestic delivery"
+                      name=" delivery"
                     ></RadioButton>
                   </div>
                 </div>
@@ -45,11 +94,11 @@ export default function Cart() {
                   <div className="flex flex-col gap-5">
                     <RadioButton
                       value="Международная доставка"
-                      name="international delivery"
+                      name=" delivery"
                     ></RadioButton>
                     <RadioButton
                       value="СДЭК/7-10 дней/1390 руб"
-                      name="international delivery"
+                      name=" delivery"
                     ></RadioButton>
                   </div>
                 </div>

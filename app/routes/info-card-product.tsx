@@ -1,4 +1,4 @@
-import ProductPage from "~/pages/ProductPage";
+import ProductPage from "~/pages/ProductPage/ProductPage";
 import type { Route } from "./+types/info-card-product";
 import { redirect } from "react-router";
 import { products } from "data/categories";
