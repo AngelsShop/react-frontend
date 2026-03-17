@@ -1,4 +1,3 @@
-import type { ProductCardProps } from "data/categories";
 import { useState } from "react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide, type SwiperClass } from "swiper/react";
@@ -8,6 +7,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import type { ProductCardProps } from "~/types/Product";
 
 type Props = {
   product: ProductCardProps;

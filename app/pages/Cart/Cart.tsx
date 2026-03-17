@@ -1,21 +1,51 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { Link } from "react-router";
 import Button from "~/components/Button";
 import Container from "~/components/Container";
-import Input from "~/components/Input";
-import RadioButton from "~/components/RadioButton";
+import OrderInformation from "./Components/OrderInformation";
+import type {
+  OrderActionTypeProps,
+  OrderInformationProps,
+} from "~/types/Components";
+
+function formReducer(
+  state: OrderInformationProps,
+  action: OrderActionTypeProps,
+) {
+  switch (action.type) {
+    case "change_field": {
+      return {
+        ...state,
+        [action.field]: action.value,
+      };
+    }
+  }
+}
+
+const orderDetails = {
+  name: "",
+  lastName: "",
+  email: "",
+  telephone: "",
+  city: "",
+};
 
 export default function Cart() {
-  const [orderDetails, setOrderDetails] = useState({
-    name: "",
-    lastName: "",
-    email: "",
-    telephone: "",
-  });
+  const [state, dispatch] = useReducer(formReducer, orderDetails);
+
+  function handleInputNameChange(field: keyof OrderInformationProps) {
+    return (e: React.ChangeEvent<HTMLInputElement>) => {
+      dispatch({
+        type: "change_field",
+        field,
+        value: e.target.value,
+      });
+    };
+  }
 
   useEffect(() => {
-    console.log(orderDetails);
-  }, [orderDetails]);
+    console.log(state);
+  }, [state]);
 
   return (
     <div className="mt-28 flex flex-col gap-y-16">
@@ -30,111 +60,10 @@ export default function Cart() {
       <section>
         <Container>
           <div className="grid grid-cols-[1fr_300px] gap-5">
-            <div className="w-full flex flex-col gap-5">
-              <h3>Оформление заказа</h3>
-              <div className="grid grid-cols-2 gap-5">
-                <Input
-                  value={orderDetails.name}
-                  onChange={(e) =>
-                    setOrderDetails((prev) => ({
-                      ...prev,
-                      name: e.target.value,
-                    }))
-                  }
-                  placeholder="Ваше имя*"
-                  required
-                ></Input>
-                <Input
-                  value={orderDetails.lastName}
-                  onChange={(e) =>
-                    setOrderDetails((prev) => ({
-                      ...prev,
-                      lastName: e.target.value,
-                    }))
-                  }
-                  placeholder="Ваша фамилия*"
-                ></Input>
-                <Input
-                  value={orderDetails.email}
-                  onChange={(e) =>
-                    setOrderDetails((prev) => ({
-                      ...prev,
-                      email: e.target.value,
-                    }))
-                  }
-                  placeholder="Ваш e-mail*"
-                ></Input>
-                <Input
-                  value={orderDetails.telephone}
-                  onChange={(e) =>
-                    setOrderDetails((prev) => ({
-                      ...prev,
-                      telephone: e.target.value,
-                    }))
-                  }
-                  placeholder="Ваш телефон*"
-                ></Input>
-              </div>
-              <div className="grid grid-cols-2 gap-5">
-                <div className="flex flex-col gap-5">
-                  <span>По России</span>
-                  <div className="flex flex-col gap-5">
-                    <RadioButton
-                      value="Самовывоз"
-                      name=" delivery"
-                    ></RadioButton>
-                    <RadioButton
-                      value="Почтой России"
-                      name=" delivery"
-                    ></RadioButton>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-5">
-                  <span>Международная доставка:</span>
-                  <div className="flex flex-col gap-5">
-                    <RadioButton
-                      value="Международная доставка"
-                      name=" delivery"
-                    ></RadioButton>
-                    <RadioButton
-                      value="СДЭК/7-10 дней/1390 руб"
-                      name=" delivery"
-                    ></RadioButton>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col gap-5">
-                <span>Адрес доставки:</span>
-                <div className="grid grid-cols-2 gap-5">
-                  <Input placeholder="Город*" required></Input>
-                  <Input placeholder="Отделение почты*"></Input>
-                </div>
-              </div>
-              <div className="flex flex-col gap-5">
-                <span>
-                  Вы можете оплатить покупку одним из ниже перечисленных
-                  способов:
-                </span>
-                <div className="grid grid-cols-2 gap-5">
-                  <RadioButton
-                    value="Полная предоплата"
-                    name="pay delivery"
-                  ></RadioButton>
-                  <RadioButton
-                    value="При получении"
-                    name="pay delivery"
-                  ></RadioButton>
-                  <RadioButton
-                    value="Оплата в рассрочку"
-                    name="pay delivery"
-                  ></RadioButton>
-                </div>
-              </div>
-              <div className="flex flex-col gap-5">
-                <span>Использование бонусного счёта:</span>
-                <Input placeholder="Сумма списания бонусов*"></Input>
-              </div>
-            </div>
+            <OrderInformation
+              state={state}
+              handleInputNameChange={handleInputNameChange}
+            />
             <div className="flex flex-col gap-5">
               <Link
                 to="/"

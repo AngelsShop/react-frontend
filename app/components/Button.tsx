@@ -1,4 +1,4 @@
-import type { ButtonProps } from "data/categories";
+import type { ButtonProps } from "~/types/Components";
 
 export default function Button({
   children,

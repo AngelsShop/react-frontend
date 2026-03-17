@@ -1,7 +1,7 @@
-import type { ProductCardProps } from "data/categories";
 import { NavLink } from "react-router";
 import ColorJacket from "./ColorJacket";
 import Favourite from "./Favourite";
+import type { ProductCardProps } from "~/types/Product";
 
 type Props = {
   product: ProductCardProps;

@@ -1,9 +1,9 @@
-import { products, type ProductCardProps } from "data/categories";
 import Container from "./Container";
 import SelectInfo from "./SelectInfo";
 import SwiperForInfoPage from "./SwiperForInfoPage";
 import Button from "./Button";
 import ColorJacket from "./ColorJacket";
+import type { ProductCardProps } from "~/types/Product";
 
 type Props = {
   product: ProductCardProps;

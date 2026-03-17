@@ -36,20 +36,20 @@ export default function Header() {
             </NavLink>
           </div>
           <div>
-            <a href="/">
+            <NavLink to="/">
               <img src="/images/logo.svg" alt="Logo" width={400} />
-            </a>
+            </NavLink>
           </div>
           <div className="flex gap-x-8">
-            <a href="">
+            <NavLink to="/">
               <img src="/images/loupe.svg" alt="" />
-            </a>
-            <a href="">
+            </NavLink>
+            <NavLink to="/">
               <img src="/images/person.svg" alt="" />
-            </a>
-            <a href="">
+            </NavLink>
+            <NavLink to="/">
               <img src="/images/heart.svg" alt="" />
-            </a>
+            </NavLink>
             <NavLink to="/cart">
               <img src="/images/cart.svg" alt="" />
             </NavLink>

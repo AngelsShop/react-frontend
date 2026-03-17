@@ -1,7 +1,8 @@
-import { products, type ProductCardProps } from "data/categories";
+import { products } from "data/categories";
 import Container from "~/components/Container";
 import ProductCard from "~/components/ProductCard";
 import ProductInfo from "~/components/ProductInfo";
+import type { ProductCardProps } from "~/types/Product";
 
 type Props = {
   product: ProductCardProps;

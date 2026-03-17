@@ -1,29 +1,4 @@
-export type ProductCardProps = {
-  id: string;
-  title: string;
-  price: number;
-  currency: string;
-  sizes: string[];
-  colors: string[];
-  image: string;
-  imageSwiper: string[];
-  description: { composition: string[]; care: string[] };
-  isFavorite: boolean;
-  isNew: boolean;
-};
-
-export type FilterProps = {
-  id: string;
-  title: string;
-  type: string;
-  options: string[];
-};
-
-export type ButtonProps = {
-  children: React.ReactNode;
-  type?: "reset" | "submit" | "button";
-  variant: "brown" | "white";
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+import type { ProductCardProps } from "~/types/Product";
 
 export const categories = [
   { id: 1, title: "Куртки", image: "../public/images/categories/куртки.png" },
