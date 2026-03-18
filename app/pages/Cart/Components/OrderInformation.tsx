@@ -4,38 +4,35 @@ import type { OrderInformationProps } from "~/types/Components";
 
 type Props = {
   state: OrderInformationProps;
-  handleInputNameChange: (
+  handleInputChange: (
     field: keyof OrderInformationProps,
   ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function OrderInformation({
-  state,
-  handleInputNameChange,
-}: Props) {
+export default function OrderInformation({ state, handleInputChange }: Props) {
   return (
     <div className="w-full flex flex-col gap-5">
       <h3>Оформление заказа</h3>
       <div className="grid grid-cols-2 gap-5">
         <Input
           value={state.name}
-          onChange={handleInputNameChange("name")}
+          onChange={handleInputChange("name")}
           placeholder="Ваше имя*"
           required
         ></Input>
         <Input
           value={state.lastName}
-          onChange={handleInputNameChange("lastName")}
+          onChange={handleInputChange("lastName")}
           placeholder="Ваша фамилия*"
         ></Input>
         <Input
           value={state.email}
-          onChange={handleInputNameChange("email")}
+          onChange={handleInputChange("email")}
           placeholder="Ваш e-mail*"
         ></Input>
         <Input
           value={state.telephone}
-          onChange={handleInputNameChange("telephone")}
+          onChange={handleInputChange("telephone")}
           placeholder="Ваш телефон*"
         ></Input>
       </div>
@@ -65,12 +62,12 @@ export default function OrderInformation({
         <span>Адрес доставки:</span>
         <div className="grid grid-cols-2 gap-5">
           <Input
-            onChange={handleInputNameChange("city")}
+            onChange={handleInputChange("city")}
             placeholder="Город*"
             required
           ></Input>
           <Input
-            onChange={handleInputNameChange("postOffice")}
+            onChange={handleInputChange("postOffice")}
             placeholder="Отделение почты*"
           ></Input>
         </div>

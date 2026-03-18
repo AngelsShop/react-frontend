@@ -19,21 +19,25 @@ function formReducer(
         [action.field]: action.value,
       };
     }
+    default: {
+      throw Error(`unknown action type: ${action.type}`);
+    }
   }
 }
 
-const orderDetails = {
+const orderDetails: OrderInformationProps = {
   name: "",
   lastName: "",
   email: "",
   telephone: "",
   city: "",
+  postOffice: "",
 };
 
 export default function Cart() {
   const [state, dispatch] = useReducer(formReducer, orderDetails);
 
-  function handleInputNameChange(field: keyof OrderInformationProps) {
+  function handleInputChange(field: keyof OrderInformationProps) {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       dispatch({
         type: "change_field",
@@ -42,10 +46,6 @@ export default function Cart() {
       });
     };
   }
-
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
 
   return (
     <div className="mt-28 flex flex-col gap-y-16">
@@ -62,7 +62,7 @@ export default function Cart() {
           <div className="grid grid-cols-[1fr_300px] gap-5">
             <OrderInformation
               state={state}
-              handleInputNameChange={handleInputNameChange}
+              handleInputChange={handleInputChange}
             />
             <div className="flex flex-col gap-5">
               <Link

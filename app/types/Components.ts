@@ -22,6 +22,6 @@ export type OrderInformationProps = {
 
 export type OrderActionTypeProps = {
   type: "change_field";
-  field: string;
+  field: keyof OrderInformationProps;
   value: string;
 };
