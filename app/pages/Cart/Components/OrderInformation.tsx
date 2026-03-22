@@ -1,6 +1,12 @@
 import Input from "~/components/Input";
 import RadioButton from "~/components/RadioButton";
 import type { OrderInformationProps } from "~/types/Components";
+import "@geoapify/geocoder-autocomplete/styles/minimal.css";
+import {
+  GeoapifyContext,
+  GeoapifyGeocoderAutocomplete,
+} from "@geoapify/react-geocoder-autocomplete";
+import CityAutocomplete from "./CityAutocomplete";
 
 type Props = {
   state: OrderInformationProps;
@@ -61,11 +67,7 @@ export default function OrderInformation({ state, handleInputChange }: Props) {
       <div className="flex flex-col gap-5">
         <span>Адрес доставки:</span>
         <div className="grid grid-cols-2 gap-5">
-          <Input
-            onChange={handleInputChange("city")}
-            placeholder="Город*"
-            required
-          ></Input>
+          <CityAutocomplete></CityAutocomplete>
           <Input
             onChange={handleInputChange("postOffice")}
             placeholder="Отделение почты*"

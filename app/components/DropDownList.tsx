@@ -1,5 +1,5 @@
-import type { FilterProps } from "data/categories";
 import { useSelect, useTagGroup } from "downshift";
+import type { FilterProps } from "~/types/Components";
 
 type PropsDropDownList = {
   filter: FilterProps;
