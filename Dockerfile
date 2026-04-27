@@ -2,11 +2,10 @@ FROM node:22 as builder
 
 WORKDIR /app
 
-RUN npm cache clean --force
-
 COPY package*.json ./
 
-RUN NODE_OPTIONS="--max-old-space-size=2048" npm ci --prefer-offline --no-audit
+RUN npm cache clean --force
+RUN NODE_OPTIONS="--max-old-space-size=4096" npm ci --prefer-offline --no-audit
 
 COPY . .
 
