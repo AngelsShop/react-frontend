@@ -15,6 +15,6 @@ FROM node:22
 
 WORKDIR /app
 
-COPY --from=builder /app/server.js ./
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/node_modules ./node_modules
+COPY server.js ./
