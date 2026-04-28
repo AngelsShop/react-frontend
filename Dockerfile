@@ -7,7 +7,7 @@ COPY package*.json ./
 RUN npm cache clean --force
 RUN echo "legacy-peer-deps=true" > .npmrc
 
-RUN npm ci --prefer-offline --no-audit || npm install --legacy-peer-deps --prefer-offline --no-audit
+RUN npm install --prefer-offline
 
 COPY . .
 
