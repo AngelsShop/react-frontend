@@ -1,10 +1,9 @@
-FROM node:22 as builder
+FROM node:22-alpine as builder
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm cache clean --force
 RUN npm ci
 
 COPY . .
@@ -12,7 +11,7 @@ COPY . .
 RUN npm run build
 RUN npm prune --production
 
-FROM node:22
+FROM node:22-alpine
 
 WORKDIR /app
 

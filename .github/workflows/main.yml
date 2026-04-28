@@ -1,4 +1,4 @@
-name: Main Landing Action
+name: React Frontend Action
 
 on:
   push:
