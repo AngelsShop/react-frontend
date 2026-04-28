@@ -2,7 +2,11 @@ FROM node:22-alpine as builder
 
 WORKDIR /app
 
+RUN npm install -g npm@latest
+
 COPY package*.json ./
+
+RUN npm cache clean --force
 
 RUN npm ci
 
