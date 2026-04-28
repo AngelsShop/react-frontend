@@ -1,14 +1,13 @@
-FROM node:22-alpine as builder
+FROM node:22-alpine AS builder
 
 WORKDIR /app
-
-RUN npm install -g npm@latest
 
 COPY package*.json ./
 
 RUN npm cache clean --force
+RUN echo "legacy-peer-deps=true" > .npmrc
 
-RUN npm ci
+RUN npm ci --prefer-offline --no-audit || npm install --legacy-peer-deps --prefer-offline --no-audit
 
 COPY . .
 
