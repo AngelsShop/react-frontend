@@ -10,7 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'npm'
@@ -20,7 +21,7 @@ jobs:
           username: ${{ vars.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Bulild and push Docker image
-        uses: docker/build-push-action@v4.1.1
+        uses: docker/build-push-action@v7
         with:
           context: .
           push: true
