@@ -4,10 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm cache clean --force
-RUN echo "legacy-peer-deps=true" > .npmrc
-
-RUN npm install --prefer-offline
+RUN npm ci
 
 COPY . .
 
