@@ -96,7 +96,7 @@ export default function Cart() {
                 </div>
                 <div className="flex justify-between">
                   <span className="uppercase">Бонусы:</span>
-                  <span className="font-bold">-69 грн</span>
+                  <span className="font-bold">-69 руб</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="uppercase">Итого:</span>

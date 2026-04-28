@@ -1,10 +1,10 @@
 import type { ProductCardProps } from "~/types/Product";
 
 export const categories = [
-  { id: 1, title: "Куртки", image: "../public/images/categories/куртки.png" },
-  { id: 2, title: "Пальто", image: "../public/images/categories/пальто.png" },
-  { id: 3, title: "Шубы", image: "../public/images/categories/шубы.png" },
-  { id: 4, title: "Парки", image: "../public/images/categories/парки.png" },
+  { id: 1, title: "Куртки", image: "/images/categories/jacket.png" },
+  { id: 2, title: "Пальто", image: "/images/categories/coat.png" },
+  { id: 3, title: "Шубы", image: "/images/categories/furcoat.png" },
+  { id: 4, title: "Парки", image: "/images/categories/parka.png" },
 ];
 
 export const products: ProductCardProps[] = [
