@@ -10,11 +10,9 @@
   },
   "dependencies": {
     "@geoapify/react-geocoder-autocomplete": "^3.0.0",
-    "@react-router/express": "^7.14.2",
     "@react-router/node": "^7.14.2",
     "@react-router/serve": "^7.14.2",
     "downshift": "^9.3.2",
-    "express": "^5.2.1",
     "isbot": "^5.1.31",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
