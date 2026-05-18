@@ -4,6 +4,7 @@ export default function Button({
   children,
   type = "button",
   variant,
+  className = "",
   ...rest
 }: ButtonProps) {
   const baseClass =
@@ -17,7 +18,7 @@ export default function Button({
   return (
     <button
       type={type}
-      className={`${baseClass} ${variants[variant]}`}
+      className={`${baseClass} ${variants[variant]} ${className}`}
       {...rest}
     >
       {children}

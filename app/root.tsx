@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./style.css";
+import { ModalAuthorizationProvider } from "./context/modalAuthorization";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -22,9 +23,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="min-h-lvh flex flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ModalAuthorizationProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ModalAuthorizationProvider>
+
         <ScrollRestoration />
         <Scripts />
       </body>
