@@ -56,7 +56,7 @@ export default function DropDownList({ filter }: PropsDropDownList) {
       <div>
         <div className="w-72 flex flex-col gap-1">
           <div
-            className="p-2 bg-white flex justify-between cursor-pointer"
+            className=" bg-white flex justify-between cursor-pointer"
             {...getToggleButtonProps()}
           >
             <span>{selectedItem ? selectedItem : filter.title}</span>

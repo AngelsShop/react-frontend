@@ -1,13 +1,13 @@
 import ProductPage from "~/pages/ProductPage/ProductPage";
 import type { Route } from "./+types/info-card-product";
 import { redirect } from "react-router";
-import { products } from "data/categories";
+import { getProductById } from "~/service/fetchProduct";
 
-export const loader = ({ params }: Route.ClientLoaderArgs) => {
-  if (!params.id) {
+export const loader = async ({ params }: Route.ClientLoaderArgs) => {
+  if (!params.productId) {
     return redirect("/catalog");
   }
-  const product = products.find((el) => el.id === params.id);
+  const product = await getProductById(params.productId);
   if (product) {
     return { product };
   }

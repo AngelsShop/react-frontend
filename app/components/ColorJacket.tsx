@@ -1,5 +1,5 @@
 type Props = {
-  colors: string[];
+  colors: Set<string>;
   size: "small" | "big";
 };
 
@@ -10,7 +10,7 @@ export default function ColorJacket({ colors, size }: Props) {
   };
   return (
     <div className="flex gap-2">
-      {colors.map((color) => (
+      {Array.from(colors).map((color) => (
         <div
           className={`rounded-full shadow-[0_0_1px_#252525] ${sizes[size]}`}
           style={{ background: color }}

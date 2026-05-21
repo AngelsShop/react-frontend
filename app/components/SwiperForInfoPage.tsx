@@ -7,10 +7,10 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import type { ProductCardProps } from "~/types/Product";
+import type { ProductInfoProps } from "~/types/Product";
 
 type Props = {
-  product: ProductCardProps;
+  product: ProductInfoProps;
 };
 
 export default function SwiperForInfoPage({ product }: Props) {
@@ -27,7 +27,7 @@ export default function SwiperForInfoPage({ product }: Props) {
         modules={[FreeMode, Navigation, Thumbs]}
         direction="vertical"
       >
-        {product.imageSwiper.map((el) => {
+        {product.variant.images.map((el) => {
           return (
             <SwiperSlide>
               <img src={el} />
@@ -42,7 +42,7 @@ export default function SwiperForInfoPage({ product }: Props) {
         modules={[FreeMode, Navigation, Thumbs]}
         direction="vertical"
       >
-        {product.imageSwiper.map((el) => {
+        {product.variant.images.map((el) => {
           return (
             <SwiperSlide>
               <img src={el} />

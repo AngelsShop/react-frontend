@@ -3,13 +3,16 @@ import SelectInfo from "./SelectInfo";
 import SwiperForInfoPage from "./SwiperForInfoPage";
 import Button from "./Button";
 import ColorJacket from "./ColorJacket";
-import type { ProductCardProps } from "~/types/Product";
+import type { ProductInfoProps } from "~/types/Product";
+import { useState } from "react";
 
 type Props = {
-  product: ProductCardProps;
+  product: ProductInfoProps;
 };
 
 export default function ProductInfo({ product }: Props) {
+  const uniqColors = new Set(product.variants.map((element) => element.color));
+
   return (
     <section className="mt-28">
       <Container>
@@ -19,8 +22,8 @@ export default function ProductInfo({ product }: Props) {
           </div>
           <div className="flex flex-col gap-5">
             <span>{product.title}</span>
-            <span>{product.price}</span>
-            <ColorJacket colors={product.colors} size="big"></ColorJacket>
+            <span>{product.variant.price}</span>
+            <ColorJacket colors={uniqColors} size="big"></ColorJacket>
             <SelectInfo product={product} />
             <div className="grid grid-cols-2 gap-5">
               <Button variant="brown">В корзину</Button>
@@ -29,19 +32,19 @@ export default function ProductInfo({ product }: Props) {
             <span>Подробности</span>
             <details className="border-b py-2.5">
               <summary className="list-none ">Состав</summary>
-              <ul className="list-none mt-2.5">
+              {/* <ul className="list-none mt-2.5">
                 {product.description.composition.map((item) => {
                   return <li className="text-[14px] ">{item}</li>;
                 })}
-              </ul>
+              </ul> */}
             </details>
             <details className="border-b py-2.5">
               <summary className="list-none ">Уход</summary>
-              <ul className="list-none mt-2.5">
+              {/* <ul className="list-none mt-2.5">
                 {product.description.care.map((item) => {
                   return <li className="text-[14px] ">{item}</li>;
                 })}
-              </ul>
+              </ul> */}
             </details>
           </div>
         </div>
