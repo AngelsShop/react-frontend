@@ -7,7 +7,7 @@ export const categories = [
   { id: 4, title: "Парки", image: "/images/categories/parka.png" },
 ];
 
-export const products: ProductCardProps[] = [
+export const productsDELETE = [
   {
     id: "1",
     title: "Белая куртка",

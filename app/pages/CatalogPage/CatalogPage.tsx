@@ -40,7 +40,7 @@ export default function CatalogPage() {
             {isLoading ? (
               <span>Подгружаем </span>
             ) : (
-              <div className="grid grid-cols-3 gap-x-3.5 gap-y-7 place-items-center">
+              <div className="grid grid-cols-3 gap-x-3.5 gap-y-7 place-content-between">
                 {products.map((product) => (
                   <ProductCard key={product.categoryId} product={product} />
                 ))}

@@ -3,7 +3,7 @@ export type ProductCardProps = {
   variantId: string;
   title: string;
   previewImage: string;
-  price: 0;
+  price: number;
   colors: string[];
   sizes: string[];
   categoryId: string;
@@ -43,4 +43,21 @@ export type VariantType = {
   name: string;
   productId: string;
   id: string;
+};
+
+export type ProductDELETE = {
+  id: number;
+  title: string;
+  price: number;
+  currency: string;
+  sizes: string[];
+  colors: string[];
+  image: string;
+  imageSwiper: string[];
+  isNew: boolean;
+  description: {
+    composition: string[];
+    care: string[];
+  };
+  isFavorite: boolean;
 };

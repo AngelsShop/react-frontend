@@ -7,14 +7,15 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import type { ProductInfoProps } from "~/types/Product";
+import type { ProductDELETE } from "~/types/Product";
 
 type Props = {
-  product: ProductInfoProps;
+  product: ProductDELETE;
 };
 
 export default function SwiperForInfoPage({ product }: Props) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
+
   return (
     <div className="grid grid-cols-[100px_1fr] gap-2.5 h-125">
       <Swiper
@@ -27,7 +28,7 @@ export default function SwiperForInfoPage({ product }: Props) {
         modules={[FreeMode, Navigation, Thumbs]}
         direction="vertical"
       >
-        {product.variant.images.map((el) => {
+        {product.imageSwiper.map((el) => {
           return (
             <SwiperSlide>
               <img src={el} />
@@ -42,7 +43,7 @@ export default function SwiperForInfoPage({ product }: Props) {
         modules={[FreeMode, Navigation, Thumbs]}
         direction="vertical"
       >
-        {product.variant.images.map((el) => {
+        {product.imageSwiper.map((el) => {
           return (
             <SwiperSlide>
               <img src={el} />

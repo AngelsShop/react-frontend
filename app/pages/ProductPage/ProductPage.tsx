@@ -1,14 +1,16 @@
-import { products } from "data/categories";
 import Container from "~/components/Container";
 import ProductCard from "~/components/ProductCard";
 import ProductInfo from "~/components/ProductInfo";
-import type { ProductCardProps } from "~/types/Product";
+import { useProducts } from "~/service/fetchCatalog";
+import type { ProductInfoProps } from "~/types/Product";
 
 type Props = {
-  product: ProductCardProps;
+  product: ProductInfoProps;
 };
 
 export default function ProductPage({ product }: Props) {
+  const { products, isLoading } = useProducts();
+
   return (
     <div className="flex flex-col gap-16">
       <ProductInfo product={product} />
@@ -17,14 +19,18 @@ export default function ProductPage({ product }: Props) {
           <div className="flex flex-col gap-7">
             <h3>Вам может понравится</h3>
             <div className="flex justify-between gap-3.5">
-              {products
-                .filter((el) => el.id !== product.id)
-                .slice(0, 4)
-                .map((jacket, index) => {
-                  return (
-                    <ProductCard key={index} product={jacket}></ProductCard>
-                  );
-                })}
+              {isLoading ? (
+                <p>Грузим</p>
+              ) : (
+                products
+                  .filter((el) => el.categoryId !== product.id)
+                  .slice(0, 4)
+                  .map((jacket, index) => {
+                    return (
+                      <ProductCard key={index} product={jacket}></ProductCard>
+                    );
+                  })
+              )}
             </div>
           </div>
         </Container>

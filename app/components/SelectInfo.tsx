@@ -1,8 +1,8 @@
 import { useSelect } from "downshift";
-import type { ProductInfoProps } from "~/types/Product";
+import type { VariantType } from "~/types/Product";
 
 type Props = {
-  product: ProductInfoProps;
+  product: VariantType;
 };
 
 export default function SelectInfo({ product }: Props) {
@@ -19,7 +19,7 @@ export default function SelectInfo({ product }: Props) {
       highlightedIndex,
       getItemProps,
     } = useSelect({
-      items: Array(product.variant.size),
+      items: Array(product.size),
       itemToString,
     });
     return (
@@ -38,7 +38,7 @@ export default function SelectInfo({ product }: Props) {
           {...getMenuProps()}
         >
           {isOpen &&
-            Array(product.variant.size).map((item, index) => (
+            Array(product.size).map((item, index) => (
               <li
                 className={`py-2 px-3 shadow-sm flex flex-col ${highlightedIndex === index && "bg-[#E0BEA2]"}`}
                 key={index}
