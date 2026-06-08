@@ -6,7 +6,8 @@ import ColorJacket from "./ColorJacket";
 import type { ProductInfoProps } from "~/types/Product";
 import { useEffect, useState } from "react";
 import { productsDELETE } from "data/categories";
-import { useProductVariant } from "~/service/fetchCatalog";
+import { useProductVariants } from "~/service/fetchCatalog";
+import { useSearchParams } from "react-router";
 
 type Props = {
   product: ProductInfoProps;
@@ -14,16 +15,27 @@ type Props = {
 
 export default function ProductInfo({ product }: Props) {
   const uniqColors = new Set(product.variants.map((element) => element.color));
-  const { productVariants } = useProductVariant(product.id);
   const [productDefault, setProductDefault] = useState(product.variant);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  function changeProductOfColor(color: string) {
-    const currentVariant = productVariants.find((item) => item.color === color);
+  function changeColorOfProduct(color: string) {
+    setSearchParams({ color: color });
+  }
+
+  useEffect(() => {
+    const currentVariant = product.variants.find(
+      (item) => item.color === searchParams.get("color"),
+    );
     if (currentVariant) {
       setProductDefault(currentVariant);
-      console.log(productDefault);
+    } else if (searchParams.get("color")) {
+      setSearchParams({ color: productDefault.color });
     }
-  }
+  }, [product, searchParams]);
+
+  // useEffect(() => {
+  //   setProductDefault(product.variant);
+  // }, [product]);
 
   return (
     <section className="mt-28">
@@ -33,10 +45,10 @@ export default function ProductInfo({ product }: Props) {
             <SwiperForInfoPage product={productsDELETE[0]}></SwiperForInfoPage>
           </div>
           <div className="flex flex-col gap-5">
-            <span>{product.title}</span>
+            <span>{productDefault.name}</span>
             <span>{productDefault.price}</span>
             <ColorJacket
-              changeProductOfColor={changeProductOfColor}
+              onColorClick={changeColorOfProduct}
               colors={uniqColors}
               size="big"
               choosenColor={productDefault.color}

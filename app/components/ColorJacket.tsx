@@ -1,14 +1,14 @@
 type Props = {
   colors: Set<string>;
-  changeProductOfColor: (color: string) => void;
+  onColorClick: (color: string) => void;
   size: "small" | "big";
-  choosenColor: string;
+  choosenColor?: string;
 };
 
 export default function ColorJacket({
   colors,
   size,
-  changeProductOfColor,
+  onColorClick,
   choosenColor,
 }: Props) {
   const sizes = {
@@ -21,7 +21,7 @@ export default function ColorJacket({
         <div
           className={`cursor-pointer rounded-full shadow-[0_0_1px_#252525] ${sizes[size]} ${color === choosenColor ? "shadow-[0_0_1px_1px_#000]  border-2 border-white" : ""}`}
           style={{ background: color }}
-          onClick={() => changeProductOfColor(color)}
+          onClick={() => onColorClick(color)}
         ></div>
       ))}
     </div>

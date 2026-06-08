@@ -7,6 +7,7 @@ export const loader = async ({ params }: Route.ClientLoaderArgs) => {
   if (!params.productId) {
     return redirect("/catalog");
   }
+
   const product = await getProductById(params.productId);
   if (product) {
     return { product };

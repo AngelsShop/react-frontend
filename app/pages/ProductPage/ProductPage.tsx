@@ -23,13 +23,11 @@ export default function ProductPage({ product }: Props) {
                 <p>Грузим</p>
               ) : (
                 products
-                  .filter((el) => el.categoryId !== product.id)
+                  .filter((el) => el.productId !== product.id)
                   .slice(0, 4)
-                  .map((jacket, index) => {
-                    return (
-                      <ProductCard key={index} product={jacket}></ProductCard>
-                    );
-                  })
+                  .map((jacket) => (
+                    <ProductCard key={jacket.productId} product={jacket} />
+                  ))
               )}
             </div>
           </div>

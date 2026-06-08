@@ -1,20 +1,31 @@
-import { NavLink } from "react-router";
+import { createSearchParams, Link, useNavigate } from "react-router";
 import ColorJacket from "./ColorJacket";
-import Favourite from "./Favourite";
 import type { ProductCardProps } from "~/types/Product";
-import { useState } from "react";
 
 type Props = {
   product: ProductCardProps;
 };
 
 export default function ProductCard({ product }: Props) {
+  const navigate = useNavigate();
+  const goToProductPage = (color: string) => {
+    navigate({
+      pathname: `/catalog/${product.productId}`,
+      search: `?${createSearchParams({ color: color })}`,
+    });
+  };
+
   return (
     <div className="relative flex flex-col gap-4">
       {/* <Favourite isFavorite={product.isFavorite}></Favourite>  */}
-      <NavLink to={`/catalog/${product.productId}`}>
+      <Link
+        to={{
+          pathname: `/catalog/${product.productId}`,
+          search: `?${createSearchParams({ color: product.colors[0] })}`,
+        }}
+      >
         <img className="w-full h-50" src={product.previewImage} alt="" />
-      </NavLink>
+      </Link>
       <div className="relative h-full justify-between flex flex-col items-center gap-1">
         <p>{product.title}</p>
         <div className="flex flex-col items-center gap-1">
@@ -23,7 +34,11 @@ export default function ProductCard({ product }: Props) {
           {/* {product.isNew && (
           <span className="absolute -right-10 text-[#E0BEA2]">new</span>
         ) } */}
-          <ColorJacket colors={product.colors} size="small"></ColorJacket>
+          <ColorJacket
+            colors={new Set(product.colors)}
+            size="small"
+            onColorClick={goToProductPage}
+          ></ColorJacket>
         </div>
       </div>
     </div>

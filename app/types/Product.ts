@@ -46,7 +46,7 @@ export type VariantType = {
 };
 
 export type ProductDELETE = {
-  id: number;
+  id: string;
   title: string;
   price: number;
   currency: string;

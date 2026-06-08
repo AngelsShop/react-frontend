@@ -39,7 +39,7 @@ export function useProducts() {
   return { products, isLoading, error };
 }
 
-export function useProductVariant(variantId: string) {
+export function useProductVariants(variantId: string) {
   const [productVariants, setProductVariants] = useState<VariantType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
