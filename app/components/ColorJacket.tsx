@@ -19,6 +19,7 @@ export default function ColorJacket({
     <div className="flex gap-2">
       {Array.from(colors).map((color) => (
         <div
+          key={color}
           className={`cursor-pointer rounded-full shadow-[0_0_1px_#252525] ${sizes[size]} ${color === choosenColor ? "shadow-[0_0_1px_1px_#000]  border-2 border-white" : ""}`}
           style={{ background: color }}
           onClick={() => onColorClick(color)}
