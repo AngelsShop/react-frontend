@@ -10,9 +10,9 @@ export default function HomePage() {
       <section>
         <div className="relative text-white ">
           <div className="grid grid-cols-3">
-            <img src="/images/homePage/wall1.png" alt="" />
-            <img src="/images/homePage/wall2.png" alt="" />
-            <img src="/images/homePage/wall3.png" alt="" />
+            <img src="/images/homePage/wall1.webp" alt="" />
+            <img src="/images/homePage/wall2.webp" alt="" />
+            <img src="/images/homePage/wall3.webp" alt="" />
           </div>
           <div className="absolute inset-0 flex flex-col gap-y-5 items-center justify-center">
             <h1 className="text-5xl">Новая коллекция</h1>
