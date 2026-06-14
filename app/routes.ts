@@ -10,6 +10,7 @@ export default [
   route("favorites", "routes/favorites.tsx"),
   route("personal", "routes/personal.tsx"),
   route("pay-delivery", "routes/pay-delivery.tsx"),
+  route("registration", "routes/registration.tsx"),
   route("terms-of-return", "routes/terms-of-return.tsx"),
   route("*", "routes/not-found.tsx"),
 ] satisfies RouteConfig;

@@ -28,7 +28,11 @@ export default function CatalogPage() {
         <div className="flex mt-28 gap-x-7">
           <div className="flex flex-col gap-y-5 h-min w-max">
             {categories.map((category) => {
-              return <Link to="/">{category.name}</Link>;
+              return (
+                <Link key={category.id} to="/">
+                  {category.name}
+                </Link>
+              );
             })}
           </div>
           <div className="flex gap-5 flex-col ">

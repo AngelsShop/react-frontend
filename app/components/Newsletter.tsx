@@ -1,11 +1,12 @@
 import Button from "./Button";
+import Input from "./Input";
 
 export default function Newsletter() {
   return (
     <div className="flex flex-col items-center w-150">
       <h2 className="mb-12">Узнайте первым о новинках</h2>
       <div className="flex flex-col gap-5 mb-5 w-full">
-        <input
+        <Input
           type="text"
           placeholder="Ваш e-mail*"
           required
