@@ -3,10 +3,13 @@ import { createPortal } from "react-dom";
 import Button from "~/components/Button";
 import Input from "~/components/Input";
 import { ModalAuthorizationContext } from "~/context/modalAuthorization";
+import { authorizationUser } from "~/service/fetchAuthorization";
 
 export default function Authorization() {
   const [mounted, setMounted] = useState(false);
   const context = useContext(ModalAuthorizationContext);
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
 
   if (!context) return null;
 
@@ -26,6 +29,10 @@ export default function Authorization() {
   }, [isOpenModal]);
 
   if (!mounted) return null;
+
+  async function userSignIn() {
+    const token = await authorizationUser({ login, password });
+  }
 
   return createPortal(
     <dialog open={isOpenModal}>
@@ -47,12 +54,15 @@ export default function Authorization() {
           </button>
           <p>Авторизация</p>
           <div className="flex flex-col gap-5 w-full">
-            <Input placeholder="Ваш e-mail*"></Input>
-            <Input placeholder="Ваш пароль*"></Input>
-            <div className="flex justify-between">
-              <a href="/" className="underline hover:text-[#E0BEA2]">
-                Забыли пароль?
-              </a>
+            <Input
+              placeholder="Ваш e-mail*"
+              onChange={(e) => setLogin(e.target.value)}
+            ></Input>
+            <Input
+              placeholder="Ваш пароль*"
+              onChange={(e) => setPassword(e.target.value)}
+            ></Input>
+            <div className="flex justify-center">
               <a
                 href="/registration"
                 className="underline hover:text-[#E0BEA2]"
@@ -61,7 +71,11 @@ export default function Authorization() {
               </a>
             </div>
             <form className="flex justify-center w-full">
-              <Button type="submit" variant="brown" className="w-full">
+              <Button
+                variant="brown"
+                className="w-full"
+                onClick={() => userSignIn()}
+              >
                 войти
               </Button>
             </form>

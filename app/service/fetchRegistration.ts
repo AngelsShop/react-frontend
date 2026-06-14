@@ -17,7 +17,6 @@ export async function createUser({ login, password }: createUserData) {
     });
     if (!res.ok) return new Error("Не удалось создать пользователя");
     const data = res.json();
-    console.log("победа");
     return data;
   } catch (error) {
     console.error(error);
