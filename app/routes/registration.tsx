@@ -1,4 +1,4 @@
-import Registration from "~/pages/Registration/registration";
+import Registration from "~/pages/Registration/Registration";
 
 export default function registration() {
   return <Registration />;
