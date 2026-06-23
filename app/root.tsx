@@ -7,11 +7,11 @@ import {
   ScrollRestoration,
 } from "react-router";
 
-import type { Route } from "./+types/root";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./style.css";
 import { ModalAuthorizationProvider } from "./context/modalAuthorization";
+import { UserInfoProvider } from "./context/userInfo";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -24,11 +24,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="min-h-lvh flex flex-col">
         <ModalAuthorizationProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <UserInfoProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </UserInfoProvider>
         </ModalAuthorizationProvider>
-
         <ScrollRestoration />
         <Scripts />
       </body>

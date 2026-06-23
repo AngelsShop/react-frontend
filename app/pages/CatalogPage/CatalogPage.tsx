@@ -5,10 +5,10 @@ import Container from "~/components/Container";
 import DropDownList from "~/components/DropDownList";
 import ProductCard from "~/components/ProductCard";
 import { loadFiltersCatalogPage, useProducts } from "~/service/fetchCatalog";
-import type { FilterProps, ProductCardProps } from "~/types/Product";
+import type { FilterProps } from "~/types/Product";
 
 export default function CatalogPage() {
-  const { products, isLoading, error } = useProducts();
+  const { products, isLoading } = useProducts();
   const [categories, setCategories] = useState<FilterProps[]>([]);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function CatalogPage() {
             ) : (
               <div className="grid grid-cols-3 gap-x-3.5 gap-y-7 place-content-between">
                 {products.map((product) => (
-                  <ProductCard key={product.categoryId} product={product} />
+                  <ProductCard key={product.variantId} product={product} />
                 ))}
               </div>
             )}

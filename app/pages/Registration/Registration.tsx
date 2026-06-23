@@ -12,7 +12,7 @@ export default function Registration() {
     const token = await createUser({ login, password });
     if (token) {
       // document.cookie = `token=${token.access_token}`;
-      // console.log(document.cookie);
+      console.log(document.cookie);
     }
   }
 

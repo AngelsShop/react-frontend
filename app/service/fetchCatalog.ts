@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import type { ProductCardProps, VariantType } from "~/types/Product";
-
-const API_Catalog = `https://angels-shop.ru/api/v1/product/list?page=1&limit=10`;
-const API_Filter = `https://angels-shop.ru/api/v1/category/list`;
-const API_Varints = `https://angels-shop.ru/api/v1/product`;
+import type { ProductCardProps } from "~/types/Product";
+import { api } from "./API";
 
 export function useProducts() {
   const [products, setProducts] = useState<ProductCardProps[]>([]);
@@ -12,24 +9,12 @@ export function useProducts() {
 
   async function loadForCatalogPage() {
     setIsLoading(true);
-    setError("");
-    try {
-      const res = await fetch(API_Catalog, {
-        method: "GET",
-        headers: { Accept: "application/json" },
-      });
-      if (!res.ok)
-        throw new Error(
-          `Ошибка в получении данных для подгрузки каталога ${res.status}`,
-        );
-      const data = await res.json();
-      setProducts(data.items);
-    } catch (error) {
-      console.error(`${error}`);
-      setError(`${error}`);
-    } finally {
-      setIsLoading(false);
-    }
+    const res = await api.get("/product/list", {
+      params: { page: 1, limit: 10 },
+    });
+    if (res.status >= 400) setError(res.statusText);
+    setIsLoading(false);
+    setProducts(res.data.items);
   }
 
   useEffect(() => {
@@ -39,46 +24,14 @@ export function useProducts() {
   return { products, isLoading, error };
 }
 
-export function useProductVariants(variantId: string) {
-  const [productVariants, setProductVariants] = useState<VariantType[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  async function loadVarinatsProduct() {
-    setIsLoading(true);
-    try {
-      const res = await fetch(`${API_Varints}/${variantId}/variants`);
-      if (!res.ok)
-        throw new Error(
-          `Ошибка в получении данных для подгрузки каталога ${res.status}`,
-        );
-      const data = await res.json();
-      setProductVariants(data);
-    } catch (error) {
-      console.error(`${error}`);
-      setError(`${error}`);
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    loadVarinatsProduct();
-  }, []);
-
-  return { productVariants, isLoading, error };
+export async function loadFiltersCatalogPage() {
+  const res = await api.get("/category/list");
+  return res.data;
 }
 
-export async function loadFiltersCatalogPage() {
-  try {
-    const res = await fetch(API_Filter);
-    if (res.ok) {
-      const data = await res.json();
-      return data;
-    } else {
-      throw new Error("Ошибка в получении данных для подгрузки фильтров");
-    }
-  } catch (error) {
-    throw new Error(`{$error}`);
-  }
+export async function loadForCatalogPage() {
+  const res = await api.get("/product/list", {
+    params: { page: 1, limit: 10 },
+  });
+  return res;
 }

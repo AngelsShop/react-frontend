@@ -1,15 +1,18 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { Navigate, useNavigate } from "react-router";
 import Button from "~/components/Button";
 import Input from "~/components/Input";
 import { ModalAuthorizationContext } from "~/context/modalAuthorization";
 import { authorizationUser } from "~/service/fetchAuthorization";
+import { getUser } from "~/service/fetchUser";
 
 export default function Authorization() {
   const [mounted, setMounted] = useState(false);
   const context = useContext(ModalAuthorizationContext);
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   if (!context) return null;
 
@@ -31,7 +34,14 @@ export default function Authorization() {
   if (!mounted) return null;
 
   async function userSignIn() {
-    const token = await authorizationUser({ login, password });
+    await authorizationUser({ login, password });
+    const data = await getUser();
+    console.log(data);
+
+    if (data) {
+      setIsOpenModal(false);
+      navigate("/personal");
+    }
   }
 
   return createPortal(
@@ -60,6 +70,7 @@ export default function Authorization() {
             ></Input>
             <Input
               placeholder="Ваш пароль*"
+              type="password"
               onChange={(e) => setPassword(e.target.value)}
             ></Input>
             <div className="flex justify-center">

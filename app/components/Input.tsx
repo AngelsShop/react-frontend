@@ -4,7 +4,7 @@ export default function Input({
   return (
     <input
       {...rest}
-      className="py-3.5 px-5 border focus:border-[#E0BEA2] outline-0"
+      className="w-full py-3.5 px-5 border focus:border-[#E0BEA2] outline-0"
     ></input>
   );
 }

@@ -1,12 +1,14 @@
-import { Link, NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import Container from "./Container";
 import { useContext, useEffect, useState } from "react";
 import Authorization from "~/pages/Authorization/Authorization";
 import { ModalAuthorizationContext } from "~/context/modalAuthorization";
+import { getCookie } from "~/service/API";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const context = useContext(ModalAuthorizationContext);
+  const navigate = useNavigate();
 
   if (!context) {
     throw new Error("Не был получен контекс ModalAuthorizationContext");
@@ -29,6 +31,14 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  function handlePersonalAccount() {
+    if (getCookie("access_token") !== null) {
+      setIsOpenModal(false);
+      return navigate("/personal");
+    }
+    setIsOpenModal(true);
+  }
 
   return (
     <header
@@ -54,7 +64,7 @@ export default function Header() {
               <img src="/images/loupe.svg" alt="" />
             </NavLink>
             <button
-              onClick={() => setIsOpenModal(true)}
+              onClick={() => handlePersonalAccount()}
               className="cursor-pointer"
             >
               <img src="/images/person.svg" alt="" />

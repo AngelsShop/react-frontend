@@ -1,3 +1,5 @@
+import { api } from "./API";
+
 const API = "https://angels-shop.ru/api/v1/auth/signup";
 
 type createUserData = {
@@ -6,19 +8,8 @@ type createUserData = {
 };
 
 export async function createUser({ login, password }: createUserData) {
-  try {
-    const res = await fetch(API, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ login, password }),
-    });
-    if (!res.ok) return new Error("Не удалось создать пользователя");
-    const data = res.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+  const res = await api.post("/auth/signup", { login, password });
+  document.cookie = `access_token=${res.data.access_token}; max-age=3600`;
+  // localStorage.setItem("access_token", res.data.access_token);
+  return res.data.access_token;
 }

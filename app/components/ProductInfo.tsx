@@ -6,7 +6,6 @@ import ColorJacket from "./ColorJacket";
 import type { ProductInfoProps } from "~/types/Product";
 import { useEffect, useState } from "react";
 import { productsDELETE } from "data/categories";
-import { useProductVariants } from "~/service/fetchCatalog";
 import { useSearchParams } from "react-router";
 
 type Props = {
