@@ -23,9 +23,8 @@ export default function PersonalInformation() {
   });
 
   async function handleChangeInfo() {
-    await updateUserInfo(infoUser);
-    const newInfo = await getUser();
-    setUser((prev) => ({ ...prev, ...newInfo.data }));
+    const res = await updateUserInfo(infoUser);
+    setUser((prev) => ({ ...prev, ...res.data }));
   }
 
   useEffect(() => {

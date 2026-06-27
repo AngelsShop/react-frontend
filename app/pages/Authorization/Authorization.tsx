@@ -65,7 +65,7 @@ export default function Authorization() {
           <p>Авторизация</p>
           <div className="flex flex-col gap-5 w-full">
             <Input
-              placeholder="Ваш e-mail*"
+              placeholder="Ваш номер телефона*"
               onChange={(e) => setLogin(e.target.value)}
             ></Input>
             <Input

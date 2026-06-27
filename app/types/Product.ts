@@ -7,6 +7,7 @@ export type ProductCardProps = {
   colors: string[];
   sizes: string[];
   categoryId: string;
+  isFavorite: boolean;
 };
 
 export type CatalogProducts = {

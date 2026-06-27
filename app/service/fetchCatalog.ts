@@ -8,7 +8,7 @@ export function useProducts() {
   const [error, setError] = useState("");
 
   async function loadForCatalogPage() {
-    setIsLoading(true);
+    setIsLoading(products.length === 0);
     const res = await api.get("/product/list", {
       params: { page: 1, limit: 10 },
     });
@@ -21,7 +21,7 @@ export function useProducts() {
     loadForCatalogPage();
   }, []);
 
-  return { products, isLoading, error };
+  return { products, isLoading, error, loadForCatalogPage };
 }
 
 export async function loadFiltersCatalogPage() {

@@ -1,12 +1,15 @@
 import { createSearchParams, Link, useNavigate } from "react-router";
 import ColorJacket from "./ColorJacket";
 import type { ProductCardProps } from "~/types/Product";
+import Favorite from "./Favorite";
+import { addFavorite } from "~/service/fetchFavorites";
 
 type Props = {
   product: ProductCardProps;
+  onFavorite: () => void;
 };
 
-export default function ProductCard({ product }: Props) {
+export default function ProductCard({ onFavorite, product }: Props) {
   const navigate = useNavigate();
   const goToProductPage = (color: string) => {
     navigate({
@@ -17,7 +20,7 @@ export default function ProductCard({ product }: Props) {
 
   return (
     <div className="relative flex flex-col gap-4">
-      {/* <Favourite isFavorite={product.isFavorite}></Favourite>  */}
+      <Favorite onFavorite={() => onFavorite()} product={product}></Favorite>
       <Link
         to={{
           pathname: `/catalog/${product.productId}`,
