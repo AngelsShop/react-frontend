@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import favouriteWhiteHeart from "../../public/images/catalog/favouriteWhiteHeart.svg";
-import favouriteHeart from "../../public/images/catalog/favouriteHeart.svg";
+import favouriteWhiteHeart from "public/images/catalog/favouriteWhiteHeart.svg";
+import favouriteHeart from "public/images/catalog/favouriteHeart.svg";
 import type { ProductCardProps } from "~/types/Product";
 import { addFavorite } from "~/service/fetchFavorites";
 

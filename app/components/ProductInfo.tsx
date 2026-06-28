@@ -7,6 +7,7 @@ import type { ProductInfoProps } from "~/types/Product";
 import { useEffect, useState } from "react";
 import { productsDELETE } from "data/categories";
 import { useSearchParams } from "react-router";
+import { addFavorite } from "~/service/fetchFavorites";
 
 type Props = {
   product: ProductInfoProps;
@@ -36,6 +37,10 @@ export default function ProductInfo({ product }: Props) {
   //   setProductDefault(product.variant);
   // }, [product]);
 
+  async function handleFavoriteAdd() {
+    await addFavorite(productDefault.id);
+  }
+
   return (
     <section className="mt-28">
       <Container>
@@ -55,7 +60,9 @@ export default function ProductInfo({ product }: Props) {
             <SelectInfo product={productDefault} />
             <div className="grid grid-cols-2 gap-5">
               <Button variant="brown">В корзину</Button>
-              <Button variant="white">В избранное</Button>
+              <Button onClick={() => handleFavoriteAdd()} variant="white">
+                В избранное
+              </Button>
             </div>
             <span>Подробности</span>
             <details className="border-b py-2.5">
