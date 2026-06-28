@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Navigate, useNavigate } from "react-router";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 import Button from "~/components/Button";
 import Input from "~/components/Input";
 import { ModalAuthorizationContext } from "~/context/modalAuthorization";
@@ -34,10 +35,17 @@ export default function Authorization() {
   if (!mounted) return null;
 
   async function userSignIn() {
-    await authorizationUser({ login, password });
-    const data = await getUser();
-    console.log(data);
+    const res = await authorizationUser({ login, password });
+    if (res === 401) {
+      const notify = () => toast.error("Неправильный пароль");
+      notify();
+    }
+    if (res === 404) {
+      const notify = () => toast.error("Пользователь не найден");
+      notify();
+    }
 
+    const data = await getUser();
     if (data) {
       setIsOpenModal(false);
       navigate("/personal");
@@ -46,6 +54,22 @@ export default function Authorization() {
 
   return createPortal(
     <dialog open={isOpenModal}>
+      <div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+          theme="light"
+          transition={Bounce}
+        />
+      </div>
+
       <div
         className="bg-[#00000069] w-full h-full fixed z-20"
         onClick={() => setIsOpenModal(false)}
@@ -81,15 +105,16 @@ export default function Authorization() {
                 Нет аккаунта?
               </a>
             </div>
-            <form className="flex justify-center w-full">
+            <div className="flex justify-center w-full">
               <Button
                 variant="brown"
+                type="button"
                 className="w-full"
                 onClick={() => userSignIn()}
               >
                 войти
               </Button>
-            </form>
+            </div>
           </div>
         </div>
       </div>

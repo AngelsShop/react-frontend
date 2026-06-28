@@ -39,24 +39,24 @@ export default function CatalogPage() {
 
   return (
     <section>
+      <div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+          theme="light"
+          transition={Bounce}
+        />
+      </div>
       <Container>
         <div className="flex mt-28 gap-x-7">
-          <div>
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick={false}
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover={false}
-              theme="light"
-              transition={Bounce}
-            />
-          </div>
-          <div className="flex flex-col gap-y-5 h-min w-max">
+          <div className="flex items-start flex-col gap-y-5 h-min w-max">
             {categories.map((category) => {
               return (
                 <Link key={category.id} to="/">

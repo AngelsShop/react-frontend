@@ -9,7 +9,7 @@ type User = {
 };
 
 export async function getUser() {
-  const res = api.get("/user");
+  const res = await api.get("/user");
   return res;
 }
 
