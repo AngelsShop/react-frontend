@@ -1,9 +1,8 @@
 import { useState } from "react";
 
-import favouriteWhiteHeart from "public/images/catalog/favouriteWhiteHeart.svg";
-import favouriteHeart from "public/images/catalog/favouriteHeart.svg";
+import favouriteWhiteHeart from "/images/catalog/favouriteWhiteHeart.svg";
+import favouriteHeart from "/images/catalog/favouriteHeart.svg";
 import type { ProductCardProps } from "~/types/Product";
-import { addFavorite } from "~/service/fetchFavorites";
 
 type Props = {
   product: ProductCardProps;
@@ -11,8 +10,6 @@ type Props = {
 };
 
 export default function Favourite({ onFavorite, product }: Props) {
-  const [favourite, setFavourite] = useState(product.isFavorite);
-
   const srcImage = product.isFavorite ? favouriteWhiteHeart : favouriteHeart;
   return (
     <button

@@ -10,10 +10,6 @@ export default function PersonalInformation() {
   if (!context) return null;
 
   const { setUser, user } = context;
-  // const [phone, setPhone] = useState(user.phone);
-  // const [email, setEmail] = useState(user.email);
-  // const [lastName, setLastName] = useState(user.lastName);
-  // const [firstName, setFirstName] = useState(user.firstName);
   const [infoUser, setInfoUser] = useState({
     id: "",
     phone: "",
@@ -29,7 +25,7 @@ export default function PersonalInformation() {
 
   useEffect(() => {
     setInfoUser((prev) => ({ ...prev, ...user }));
-  }, [user]);
+  }, []);
 
   return (
     <div className="flex mt-28">

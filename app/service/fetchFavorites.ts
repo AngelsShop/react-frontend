@@ -1,5 +1,6 @@
 import axios from "axios";
 import { api } from "./API";
+import type { ProductCardProps } from "~/types/Product";
 
 export async function addFavorite(variantId: string) {
   try {
@@ -12,7 +13,22 @@ export async function addFavorite(variantId: string) {
 }
 
 export async function deleteFavorite(variantId: string) {
-  const res = await api.delete(
-    `/product/variant/${variantId}/favorites/remove`,
-  );
+  await api.delete(`/product/variant/${variantId}/favorites/remove`);
+}
+
+export async function loadListFavorites() {
+  try {
+    const res = await api.get<{ items: ProductCardProps[] }>(
+      "/product/favorites/list",
+    );
+    return {
+      value: res.data,
+    };
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response) {
+      return {
+        error: error.response.status,
+      };
+    }
+  }
 }

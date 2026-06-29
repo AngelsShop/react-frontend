@@ -69,7 +69,7 @@ export default function Header() {
             >
               <img src="/images/person.svg" alt="" />
             </button>
-            <NavLink to="/">
+            <NavLink to="/favorites">
               <img src="/images/heart.svg" alt="" />
             </NavLink>
             <NavLink to="/cart">
