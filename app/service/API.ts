@@ -19,6 +19,10 @@ export function getCookie(name: string) {
   return null;
 }
 
+export function deleteCookie(name: string) {
+  document.cookie = `${name}=; Max-Age=0; path=/`;
+}
+
 api.interceptors.request.use((config) => {
   const token = getCookie("access_token");
   if (token) {

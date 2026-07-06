@@ -1,11 +1,14 @@
 import { useContext, useEffect, useEffectEvent, useState } from "react";
+import { useNavigate } from "react-router";
 import Button from "~/components/Button";
 import Container from "~/components/Container";
 import Input from "~/components/Input";
 import { UserInfoContext } from "~/context/userInfo";
+import { deleteCookie } from "~/service/API";
 import { getUser, updateUserInfo } from "~/service/fetchUser";
 
 export default function PersonalInformation() {
+  const navigate = useNavigate();
   const context = useContext(UserInfoContext);
   if (!context) return null;
 
@@ -21,6 +24,11 @@ export default function PersonalInformation() {
   async function handleChangeInfo() {
     const res = await updateUserInfo(infoUser);
     setUser((prev) => ({ ...prev, ...res.data }));
+  }
+
+  function handleClose() {
+    deleteCookie("access_token");
+    navigate("/");
   }
 
   useEffect(() => {
@@ -79,9 +87,22 @@ export default function PersonalInformation() {
               <Input placeholder="Улица"></Input>
             </div>
           </div>
-          <Button variant="brown" onClick={() => handleChangeInfo()}>
-            ОБНОВИТЬ ИНФОРМАЦИЮ
-          </Button>
+          <div className="flex flex-col w-full gap-5 items-center">
+            <Button
+              variant="brown"
+              className="w-fit px-28"
+              onClick={() => handleChangeInfo()}
+            >
+              ОБНОВИТЬ ИНФОРМАЦИЮ
+            </Button>
+            <Button
+              variant="white"
+              className="w-fit px-28"
+              onClick={() => handleClose()}
+            >
+              Выйти
+            </Button>
+          </div>
         </div>
       </Container>
     </div>
