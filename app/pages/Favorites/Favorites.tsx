@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Bounce, toast, ToastContainer } from "react-toastify";
+import { Bounce, ToastContainer } from "react-toastify";
 import Container from "~/components/Container";
 import ProductCard from "~/components/ProductCard";
 import { loadForCatalogPage } from "~/service/fetchCatalog";
@@ -16,13 +16,6 @@ export default function Favorites() {
   useEffect(() => {
     (async () => {
       const data = await loadListFavorites();
-      if (data?.error === 401) {
-        const notify = () =>
-          toast.info("Авторизуйтесь для доступа к избранным товарам", {
-            toastId: "favorites-auth",
-          });
-        notify();
-      }
       if (data?.value) {
         setListFavorites(data.value.items);
       }

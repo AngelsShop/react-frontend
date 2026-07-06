@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import favouriteWhiteHeart from "/images/catalog/favouriteWhiteHeart.svg";
 import favouriteHeart from "/images/catalog/favouriteHeart.svg";
 import type { ProductCardProps } from "~/types/Product";

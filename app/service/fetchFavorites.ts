@@ -3,13 +3,7 @@ import { api } from "./API";
 import type { ProductCardProps } from "~/types/Product";
 
 export async function addFavorite(variantId: string) {
-  try {
-    await api.post(`/product/variant/${variantId}/favorites/add`);
-  } catch (error) {
-    if (axios.isAxiosError(error) && error.response) {
-      return error.response.status;
-    }
-  }
+  await api.post(`/product/variant/${variantId}/favorites/add`);
 }
 
 export async function deleteFavorite(variantId: string) {

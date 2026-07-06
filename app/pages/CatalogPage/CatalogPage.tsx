@@ -1,7 +1,7 @@
 import { filters } from "data/categories";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { Bounce, toast, ToastContainer } from "react-toastify";
+import { Bounce, ToastContainer } from "react-toastify";
 import Container from "~/components/Container";
 import DropDownList from "~/components/DropDownList";
 import ProductCard from "~/components/ProductCard";
@@ -25,12 +25,7 @@ export default function CatalogPage() {
 
   async function onFavorite(product: ProductCardProps) {
     if (!product.isFavorite) {
-      const res = await addFavorite(product.variantId);
-      if (res === 401) {
-        const notify = () =>
-          toast.info(`Авторизуйтесь для добавления товара в избранное `);
-        notify();
-      }
+      await addFavorite(product.variantId);
     } else {
       await deleteFavorite(product.variantId);
     }
@@ -41,6 +36,7 @@ export default function CatalogPage() {
     <section>
       <div>
         <ToastContainer
+          toastClassName="border border-2 border-[#E0BEA2]"
           position="top-right"
           autoClose={5000}
           hideProgressBar={false}
