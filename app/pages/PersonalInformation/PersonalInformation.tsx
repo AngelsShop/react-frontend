@@ -33,7 +33,7 @@ export default function PersonalInformation() {
 
   useEffect(() => {
     setInfoUser((prev) => ({ ...prev, ...user }));
-  }, []);
+  }, [user]);
 
   return (
     <div className="flex mt-28">

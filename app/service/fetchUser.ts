@@ -15,6 +15,5 @@ export async function getUser() {
 
 export async function updateUserInfo(user: User) {
   const res = await api.patch("/user/update", user);
-  console.log(res);
   return res;
 }

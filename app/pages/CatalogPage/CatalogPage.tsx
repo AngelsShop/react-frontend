@@ -1,7 +1,7 @@
 import { filters } from "data/categories";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { Bounce, ToastContainer } from "react-toastify";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 import Container from "~/components/Container";
 import DropDownList from "~/components/DropDownList";
 import ProductCard from "~/components/ProductCard";
@@ -23,6 +23,10 @@ export default function CatalogPage() {
     })();
   }, []);
 
+  useEffect(() => {
+    toast.dismiss();
+  }, []);
+
   async function onFavorite(product: ProductCardProps) {
     if (!product.isFavorite) {
       await addFavorite(product.variantId);
@@ -34,22 +38,6 @@ export default function CatalogPage() {
 
   return (
     <section>
-      <div>
-        <ToastContainer
-          toastClassName="border border-2 border-[#E0BEA2]"
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover={false}
-          theme="light"
-          transition={Bounce}
-        />
-      </div>
       <Container>
         <div className="flex mt-28 gap-x-7">
           <div className="flex items-start flex-col gap-y-5 h-min w-max">
