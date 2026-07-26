@@ -53,8 +53,8 @@ export default function DropDownList({ filter }: PropsDropDownList) {
     });
 
     return (
-      <div>
-        <div className="w-72 flex flex-col gap-1">
+      <div className="max-w-72 w-full relative">
+        <div className=" flex flex-col gap-1">
           <div
             className=" bg-white flex justify-between cursor-pointer"
             {...getToggleButtonProps()}
@@ -65,7 +65,7 @@ export default function DropDownList({ filter }: PropsDropDownList) {
             </span>
           </div>
         </div>
-        <div className="w-72 flex gap-2 items-center flex-wrap p-1.5">
+        <div className="  flex gap-2 items-center flex-wrap p-1.5">
           {items.map((item, index) => (
             <span
               className={`border border-[#E0BEA2] px-1.5 mx-0.5 rounded-[10px] cursor-default hover:opacity-50 `}
@@ -83,7 +83,7 @@ export default function DropDownList({ filter }: PropsDropDownList) {
           ))}
         </div>
         <ul
-          className={`absolute w-72 bg-white mt-1 shadow-md max-h-80 p-0 z-10 ${
+          className={`absolute w-full bg-white mt-1 shadow-md max-h-80 p-0 z-10 ${
             !isOpen && "hidden"
           }`}
           {...getMenuProps()}

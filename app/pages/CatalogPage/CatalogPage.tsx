@@ -39,7 +39,7 @@ export default function CatalogPage() {
   return (
     <section>
       <Container>
-        <div className="flex mt-28 gap-x-7">
+        <div className="flex mt-28 gap-x-7 w-full">
           <div className="flex items-start flex-col gap-y-5 h-min w-max">
             {categories.map((category) => {
               return (
@@ -49,7 +49,7 @@ export default function CatalogPage() {
               );
             })}
           </div>
-          <div className="flex gap-5 flex-col ">
+          <div className="flex gap-5 flex-col w-full">
             <div className="flex gap-2.5">
               {filters.map((filter) => {
                 return <DropDownList key={filter.id} filter={filter} />;
@@ -58,7 +58,7 @@ export default function CatalogPage() {
             {isLoading ? (
               <span>Подгружаем </span>
             ) : (
-              <div className="grid grid-cols-3 gap-x-3.5 gap-y-7 place-content-between">
+              <div className="max-sm:grid-cols-2 max-sm:gap-1 grid grid-cols-3 gap-x-3.5 gap-y-7">
                 {products.map((product) => (
                   <ProductCard
                     onFavorite={() => onFavorite(product)}

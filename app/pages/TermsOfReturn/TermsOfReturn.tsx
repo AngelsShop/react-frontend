@@ -4,7 +4,7 @@ export default function TermsOfReturn() {
   return (
     <section>
       <Container>
-        <div className="mt-28 flex flex-col gap-5">
+        <div className="max-sm:mt-18 mt-28 flex flex-col gap-5">
           <h3>Обмен и возврат</h3>
           <div className="flex flex-col gap-2.5">
             <p>
@@ -13,7 +13,7 @@ export default function TermsOfReturn() {
             </p>
             <p>Обмен и возврат возможен в случае :</p>
           </div>
-          <ul className="grid grid-cols-6 gap-7">
+          <ul className="grid grid-cols-6 gap-7 max-sm:grid-cols-1">
             <li className="flex flex-col gap-2.5  items-center">
               <img src="/images/returnPolicy/1.png" alt="" />
               <p className="text-center">

@@ -15,14 +15,14 @@ export default function Footer() {
     <footer>
       <Container>
         <div
-          className="grid grid-cols-4 my-24 gap-x-12 
-      [&_div]:w-3xs
+          className="max-sm:grid-cols-2 grid grid-cols-4 my-24 gap-12 
+      
       [&_a]:text-base 
       [&_a]:text-[#252525]
       [&_h3]:uppercase
       "
         >
-          <div>
+          <div className="w-min">
             <h3>Компания</h3>
             <Ul>
               <li>

@@ -19,7 +19,7 @@ export default function ProductCard({ onFavorite, product }: Props) {
   };
 
   return (
-    <div className="relative flex flex-col gap-4">
+    <div className="relative flex flex-col gap-4 w-full">
       <Favorite onFavorite={() => onFavorite()} product={product}></Favorite>
       <Link
         to={{
@@ -30,7 +30,7 @@ export default function ProductCard({ onFavorite, product }: Props) {
         <img className="w-full h-50" src={product.previewImage} alt="" />
       </Link>
       <div className="relative h-full justify-between flex flex-col items-center gap-1">
-        <p>{product.title}</p>
+        <p>1</p>
         <div className="flex flex-col items-center gap-1">
           <span className="font-bold">{`${product.price}`}</span>
           <span className="text-[#252525]/50">{product.sizes.join(" ")}</span>
