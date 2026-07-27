@@ -5,13 +5,14 @@ import { Bounce, toast, ToastContainer } from "react-toastify";
 import Container from "~/components/Container";
 import DropDownList from "~/components/DropDownList";
 import ProductCard from "~/components/ProductCard";
+import SelectCategory from "~/components/Select";
 import { loadFiltersCatalogPage, useProducts } from "~/service/fetchCatalog";
 import { addFavorite, deleteFavorite } from "~/service/fetchFavorites";
-import type { FilterProps, ProductCardProps } from "~/types/Product";
+import type { CategoriesProps, ProductCardProps } from "~/types/Product";
 
 export default function CatalogPage() {
   const { products, isLoading, loadForCatalogPage } = useProducts();
-  const [categories, setCategories] = useState<FilterProps[]>([]);
+  const [categories, setCategories] = useState<CategoriesProps[]>([]);
   useEffect(() => {
     (async () => {
       try {
@@ -39,16 +40,24 @@ export default function CatalogPage() {
   return (
     <section>
       <Container>
-        <div className="flex mt-28 gap-x-7 w-full">
-          <div className="flex items-start flex-col gap-y-5 h-min w-max">
-            {categories.map((category) => {
-              return (
-                <Link key={category.id} to="/">
-                  {category.name}
-                </Link>
-              );
-            })}
+        <div className="flex max-sm:flex-col mt-28 gap-x-7 w-full">
+          <div>
+            <div className="block max-sm:hidden">
+              <div className="flex items-start flex-col gap-y-5 h-min w-max">
+                {categories.map((category) => {
+                  return (
+                    <Link key={category.id} to="/">
+                      {category.name}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="hidden max-sm:block">
+              <SelectCategory categories={categories} />
+            </div>
           </div>
+
           <div className="flex gap-5 flex-col w-full">
             <div className="flex gap-2.5">
               {filters.map((filter) => {

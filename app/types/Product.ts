@@ -19,7 +19,7 @@ export type CatalogProducts = {
   };
 };
 
-export type FilterProps = {
+export type CategoriesProps = {
   id: string;
   name: string;
   children: string[];
