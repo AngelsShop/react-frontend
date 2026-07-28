@@ -53,10 +53,10 @@ export default function DropDownList({ filter }: PropsDropDownList) {
     });
 
     return (
-      <div className="max-w-72 w-full relative">
+      <div className="max-w-72 max-sm:max-w-full w-full relative">
         <div className=" flex flex-col gap-1">
           <div
-            className=" bg-white flex justify-between cursor-pointer"
+            className="p-2 bg-white flex justify-between max-sm:justify-center cursor-pointer max-sm:border-b-2 border-[#E0BEA2] mb-1"
             {...getToggleButtonProps()}
           >
             <span>{selectedItem ? selectedItem : filter.title}</span>
@@ -65,7 +65,7 @@ export default function DropDownList({ filter }: PropsDropDownList) {
             </span>
           </div>
         </div>
-        <div className="  flex gap-2 items-center flex-wrap p-1.5">
+        <div className="flex gap-2 items-center flex-wrap p-[0.5px]">
           {items.map((item, index) => (
             <span
               className={`border border-[#E0BEA2] px-1.5 mx-0.5 rounded-[10px] cursor-default hover:opacity-50 `}

@@ -53,17 +53,25 @@ export default function CatalogPage() {
                 })}
               </div>
             </div>
-            <div className="hidden max-sm:block">
+            <div className="hidden max-sm:block pb-2.5">
               <SelectCategory categories={categories} />
             </div>
           </div>
 
           <div className="flex gap-5 flex-col w-full">
-            <div className="flex gap-2.5">
-              {filters.map((filter) => {
-                return <DropDownList key={filter.id} filter={filter} />;
-              })}
+            <div>
+              <div className="flex gap-2.5 max-sm:hidden">
+                {filters.map((filter) => {
+                  return <DropDownList key={filter.id} filter={filter} />;
+                })}
+              </div>
+              <div className="hidden gap-2.5 max-sm:flex max-sm:flex-col">
+                {filters.map((filter) => {
+                  return <DropDownList key={filter.id} filter={filter} />;
+                })}
+              </div>
             </div>
+
             {isLoading ? (
               <span>Подгружаем </span>
             ) : (

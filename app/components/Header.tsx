@@ -4,9 +4,17 @@ import { useContext, useEffect, useState } from "react";
 import Authorization from "~/pages/Authorization/Authorization";
 import { ModalAuthorizationContext } from "~/context/modalAuthorization";
 import { getCookie } from "~/service/API";
+import IconMenu from "./IconMenu";
+
+const icon = "/images/Menu.svg";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
   const context = useContext(ModalAuthorizationContext);
   const navigate = useNavigate();
 
@@ -42,38 +50,52 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed z-20 w-full transition ease-in duration-300 ${scrolled ? " bg-white " : ""}`}
+      className={`w-full fixed z-20 transition ease-in duration-300  ${scrolled ? " bg-white " : ""} ${isOpen ? " bg-white " : ""}`}
     >
       <Container>
-        <div className="flex justify-between items-center py-4">
-          <div className="flex gap-x-8 text-[#E0BEA2]">
-            <NavLink to="/" className="text-xl font-medium uppercase">
-              NEW
-            </NavLink>
-            <NavLink to="/catalog" className="text-xl font-medium uppercase">
-              Каталог
-            </NavLink>
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center py-4">
+          <div>
+            <div className="flex gap-x-8 text-[#E0BEA2] max-sm:hidden">
+              <NavLink to="/" className="text-xl font-medium uppercase">
+                NEW
+              </NavLink>
+              <NavLink to="/catalog" className="text-xl font-medium uppercase">
+                Каталог
+              </NavLink>
+            </div>
+            <div className="hidden max-sm:block">
+              <button onClick={toggleMenu} className="bg-none border-none">
+                <img src={icon} alt="меню" />
+              </button>
+
+              {isOpen && <IconMenu onClick={toggleMenu} />}
+            </div>
           </div>
           <div>
             <NavLink to="/">
-              <img src="/images/logo.svg" alt="Logo" width={400} />
+              <img
+                src="/images/logo.svg"
+                alt="Logo"
+                className="w-80 max-sm:w-50"
+              />
             </NavLink>
           </div>
-          <div className="flex gap-x-8">
-            <NavLink to="/">
-              <img src="/images/loupe.svg" alt="" />
-            </NavLink>
+          <div className="flex gap-x-8 max-sm:gap-x-2 justify-end">
             <button
               onClick={() => handlePersonalAccount()}
               className="cursor-pointer"
             >
-              <img src="/images/person.svg" alt="" />
+              <img src="/images/person.svg" alt="" className="max-sm:w-5" />
             </button>
             <NavLink to="/favorites">
-              <img src="/images/heart.svg" alt="" />
+              <img
+                src="/images/heart.svg"
+                alt=""
+                className="max-sm:w-5 max-sm:hidden"
+              />
             </NavLink>
             <NavLink to="/cart">
-              <img src="/images/cart.svg" alt="" />
+              <img src="/images/cart.svg" alt="" className="max-sm:w-5" />
             </NavLink>
           </div>
         </div>
