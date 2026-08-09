@@ -1,7 +1,4 @@
-type CategoriesCardProps = {
-  title: string;
-  image: string;
-};
+import type { CategoriesCardProps } from "~/types/Components";
 
 export default function CategoryCard({ title, image }: CategoriesCardProps) {
   return (

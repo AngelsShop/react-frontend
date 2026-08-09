@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import Authorization from "~/pages/Authorization/Authorization";
 import { ModalAuthorizationContext } from "~/context/modalAuthorization";
 import { getCookie } from "~/service/API";
-import IconMenu from "./IconMenu";
+import Menu from "./Menu";
 
 const icon = "/images/Menu.svg";
 
@@ -68,7 +68,7 @@ export default function Header() {
                 <img src={icon} alt="меню" />
               </button>
 
-              {isOpen && <IconMenu onClick={toggleMenu} />}
+              {isOpen && <Menu onClick={toggleMenu} />}
             </div>
           </div>
           <div>

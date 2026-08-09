@@ -4,7 +4,7 @@ type MenuProps = {
   name: string;
 };
 
-export default function MenuLink({ url, name }: MenuProps) {
+export default function LinkMenu({ url, name }: MenuProps) {
   return (
     <NavLink
       to={url}

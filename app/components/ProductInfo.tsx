@@ -1,6 +1,6 @@
 import Container from "./Container";
 import SelectInfo from "./SelectInfo";
-import SwiperForInfoPage from "./SwiperForInfoPage";
+import SwiperForInfoPage from "./SwiperForInfoPage/SwiperForInfoPage";
 import Button from "./Button";
 import ColorJacket from "./ColorJacket";
 import type { ProductInfoProps } from "~/types/Product";

@@ -1,5 +1,3 @@
-import type { ProductCardProps } from "~/types/Product";
-
 export const categories = [
   { id: 1, title: "Куртки", image: "/images/categories/jacket.png" },
   { id: 2, title: "Пальто", image: "/images/categories/coat.png" },

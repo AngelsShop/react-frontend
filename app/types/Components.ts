@@ -5,6 +5,12 @@ export type FilterProps = {
   options: string[];
 };
 
+export type CategoriesCardProps = {
+  title: string;
+  image: string;
+  id: number;
+};
+
 export type ButtonProps = {
   children: React.ReactNode;
   type?: "reset" | "submit" | "button";
