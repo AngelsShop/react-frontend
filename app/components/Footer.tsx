@@ -59,7 +59,7 @@ export default function Footer() {
             <h3>Контакты</h3>
             <Ul>
               <li>
-                <Link to="/">+7 (973) 096 36 44</Link>
+                <Link to="/">+7 (920) 772 69 69</Link>
               </li>
               <li>
                 <Link to="/">info@yanki.com</Link>

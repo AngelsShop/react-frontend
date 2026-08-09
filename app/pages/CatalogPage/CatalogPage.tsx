@@ -44,13 +44,11 @@ export default function CatalogPage() {
           <div>
             <div className="block max-sm:hidden">
               <div className="flex items-start flex-col gap-y-5 h-min w-max">
-                {categories.map((category) => {
-                  return (
-                    <Link key={category.id} to="/">
-                      {category.name}
-                    </Link>
-                  );
-                })}
+                {categories.map((category) => (
+                  <Link key={category.id} to="/">
+                    {category.name}
+                  </Link>
+                ))}
               </div>
             </div>
             <div className="hidden max-sm:block pb-2.5">
@@ -61,21 +59,21 @@ export default function CatalogPage() {
           <div className="flex gap-5 flex-col w-full">
             <div>
               <div className="flex gap-2.5 max-sm:hidden">
-                {filters.map((filter) => {
-                  return <DropDownList key={filter.id} filter={filter} />;
-                })}
+                {filters.map((filter) => (
+                  <DropDownList key={filter.id} filter={filter} />
+                ))}
               </div>
               <div className="hidden gap-2.5 max-sm:flex max-sm:flex-col">
-                {filters.map((filter) => {
-                  return <DropDownList key={filter.id} filter={filter} />;
-                })}
+                {filters.map((filter) => (
+                  <DropDownList key={filter.id} filter={filter} />
+                ))}
               </div>
             </div>
 
             {isLoading ? (
               <span>Подгружаем </span>
             ) : (
-              <div className="max-sm:grid-cols-2 max-sm:gap-1 grid grid-cols-3 gap-x-3.5 gap-y-7">
+              <div className="max-sm:grid-cols-2 max-sm:gap-x-2.5 max-sm:gap-y-5 grid grid-cols-3 gap-x-3.5 gap-y-7">
                 {products.map((product) => (
                   <ProductCard
                     onFavorite={() => onFavorite(product)}

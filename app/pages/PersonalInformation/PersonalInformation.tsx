@@ -40,11 +40,13 @@ export default function PersonalInformation() {
       <Container>
         <div className="w-full flex flex-col gap-5">
           <div className="w-full flex justify-center border-y">
-            <p className="py-4 px-20 bg-[#E0BEA2] text-white">Личные данные</p>
+            <p className="py-4 px-20 bg-[#E0BEA2] text-white max-sm:px-10 max-sm:py-2">
+              Личные данные
+            </p>
           </div>
           <div className="flex flex-col gap-5">
             <p>Персональные данные</p>
-            <div className="flex justify-between gap-5">
+            <div className="flex justify-between gap-5 max-sm:flex-col">
               <Input
                 placeholder="Имя"
                 onChange={(e) =>
@@ -82,7 +84,7 @@ export default function PersonalInformation() {
           </div>
           <div className="flex flex-col gap-5">
             <p>Адрес доставки:</p>
-            <div className="flex justify-between gap-5">
+            <div className="flex justify-between gap-5 max-sm:flex-col">
               <Input placeholder="Город"></Input>
               <Input placeholder="Улица"></Input>
             </div>
@@ -90,14 +92,14 @@ export default function PersonalInformation() {
           <div className="flex flex-col w-full gap-5 items-center">
             <Button
               variant="brown"
-              className="w-fit px-28"
+              className="w-fit px-28 max-sm:px-14"
               onClick={() => handleChangeInfo()}
             >
               ОБНОВИТЬ ИНФОРМАЦИЮ
             </Button>
             <Button
               variant="white"
-              className="w-fit px-28"
+              className="w-fit px-28 max-sm:px-14"
               onClick={() => handleClose()}
             >
               Выйти
