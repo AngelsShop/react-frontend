@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide, type SwiperClass } from "swiper/react";
 
-import "./SwiperStyleForInfoPage.css";
+import "./swiperStyleForInfoPage.css";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
