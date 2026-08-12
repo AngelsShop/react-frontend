@@ -44,7 +44,7 @@ export default function ProductInfo({ product }: Props) {
   return (
     <section className="mt-28">
       <Container>
-        <div className="grid grid-cols-2 gap-12">
+        <div className="grid sm:grid-cols-2 sm:gap-12 gap-8">
           <div>
             <SwiperForInfoPage product={productsDELETE[0]}></SwiperForInfoPage>
           </div>

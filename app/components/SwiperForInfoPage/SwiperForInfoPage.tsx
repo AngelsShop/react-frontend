@@ -17,16 +17,13 @@ export default function SwiperForInfoPage({ product }: Props) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
 
   return (
-    <div className="grid grid-cols-[100px_1fr] gap-2.5 h-125">
+    <div className="grid sm:grid-cols-[1fr_100px] gap-2.5 h-125">
       <Swiper
-        onSwiper={setThumbsSwiper}
         loop={true}
         spaceBetween={10}
-        slidesPerView={5}
-        freeMode={true}
-        watchSlidesProgress={true}
+        thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        direction="vertical"
+        direction="horizontal"
       >
         {product.imageSwiper.map((el) => {
           return (
@@ -37,11 +34,19 @@ export default function SwiperForInfoPage({ product }: Props) {
         })}
       </Swiper>
       <Swiper
+        onSwiper={setThumbsSwiper}
         loop={true}
         spaceBetween={10}
-        thumbs={{ swiper: thumbsSwiper }}
+        slidesPerView={4}
+        freeMode={true}
+        watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        direction="vertical"
+        breakpoints={{
+          320: { direction: "horizontal" },
+          640: {
+            direction: "vertical",
+          },
+        }}
       >
         {product.imageSwiper.map((el) => {
           return (
