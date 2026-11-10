@@ -8,7 +8,7 @@ import {
 } from "react-router";
 
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 import "./style.css";
 import { ModalAuthorizationProvider } from "./context/modalAuthorization";
 import { UserInfoProvider } from "./context/userInfo";

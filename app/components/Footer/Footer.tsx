@@ -1,5 +1,6 @@
 import { Link } from "react-router";
-import Container from "./Container";
+import Container from "../Container";
+import LinkFooter from "./LinkFooter";
 
 export default function Footer() {
   type CardProps = {
@@ -16,9 +17,6 @@ export default function Footer() {
       <Container>
         <div
           className="max-sm:grid-cols-2 grid grid-cols-4 my-24 gap-12 
-      
-      [&_a]:text-base 
-      [&_a]:text-[#252525]
       [&_h3]:uppercase
       "
         >
@@ -26,7 +24,7 @@ export default function Footer() {
             <h3>Компания</h3>
             <Ul>
               <li>
-                <Link to="/contacts">Контакты</Link>
+                <LinkFooter title="Контакты" url="/contacts"></LinkFooter>
               </li>
             </Ul>
           </div>
@@ -34,10 +32,16 @@ export default function Footer() {
             <h3>Полезное</h3>
             <Ul>
               <li>
-                <Link to="/pay-delivery">Оплата и доставка</Link>
+                <LinkFooter
+                  url="/pay-delivery"
+                  title="Оплата и доставка"
+                ></LinkFooter>
               </li>
               <li>
-                <Link to="/terms-of-return">Условия возврата</Link>
+                <LinkFooter
+                  url="/terms-of-return"
+                  title="Условия возврата"
+                ></LinkFooter>
               </li>
             </Ul>
           </div>
@@ -45,13 +49,16 @@ export default function Footer() {
             <h3>Покупателю</h3>
             <Ul>
               <li>
-                <Link to="/favorites">Избранное</Link>
+                <LinkFooter url="/favorites" title="Избранное"></LinkFooter>
               </li>
               <li>
-                <Link to="/">Публичная оферта</Link>
+                <LinkFooter url="/" title="Публичная оферта"></LinkFooter>
               </li>
               <li>
-                <Link to="/">Политика конфиденциальности</Link>
+                <LinkFooter
+                  url="/"
+                  title="Политика конфиденциальности"
+                ></LinkFooter>
               </li>
             </Ul>
           </div>
@@ -59,10 +66,10 @@ export default function Footer() {
             <h3>Контакты</h3>
             <Ul>
               <li>
-                <Link to="/">+7 (920) 772 69 69</Link>
+                <LinkFooter url="/" title="+7 (920) 772 69 69"></LinkFooter>
               </li>
               <li>
-                <Link to="/">info@yanki.com</Link>
+                <LinkFooter url="/" title="info@yanki.com"></LinkFooter>
               </li>
             </Ul>
           </div>

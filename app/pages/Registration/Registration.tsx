@@ -39,7 +39,7 @@ export default function Registration() {
         transition={Bounce}
       />
       <Container>
-        <div className="flex flex-col items-center w-150 m-auto gap-7">
+        <div className="flex flex-col items-center sm:w-150 m-auto gap-7">
           <h2>Регистрация</h2>
           <div className="flex flex-col gap-5 w-full">
             <Input
