@@ -5,7 +5,7 @@ import Button from "./Button";
 import ColorJacket from "./ColorJacket";
 import type { ProductInfoProps } from "~/types/Product";
 import { useEffect, useState } from "react";
-import { productsDELETE } from "data/categories";
+import { productsDELETE } from "../../data/categories";
 import { useSearchParams } from "react-router";
 import { addFavorite } from "~/service/fetchFavorites";
 import { addProductsCart } from "~/service/fetchCart";

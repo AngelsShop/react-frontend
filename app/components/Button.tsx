@@ -8,7 +8,7 @@ export default function Button({
   ...rest
 }: ButtonProps) {
   const baseClass =
-    "py-4 uppercase cursor-pointer hover:shadow-[0_5px_7px_0_#252525]/15 ";
+    " py-2 sm:py-4 uppercase cursor-pointer hover:shadow-[0_5px_7px_0_#252525]/15 text-[14px] sm:text-[16px]";
   const variants = {
     brown:
       "bg-[#E0BEA2] text-white active:bg-[#CCA88A] active:shadow-[inset_0_3px_7px_0_#252525]/15",

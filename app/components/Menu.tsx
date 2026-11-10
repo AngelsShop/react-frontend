@@ -11,6 +11,7 @@ export default function Menu({ ...rest }) {
       <LinkMenu url={"/"} name={"NEW"} />
       <LinkMenu url={"/catalog"} name={"каталог"} />
       <LinkMenu url={"/personal"} name={"личный кабинет"} />
+      <LinkMenu url={"/favorites"} name={"избранное"} />
       <LinkMenu url={"/terms-of-return"} name={"условия возврата"} />
       <LinkMenu url={"/contacts"} name={"контакты"} />
     </div>

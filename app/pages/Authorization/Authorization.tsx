@@ -75,13 +75,13 @@ export default function Authorization() {
         onClick={() => setIsOpenModal(false)}
       >
         <div
-          className="flex px-25 py-12 flex-col gap-7 fixed items-center w-150 bg-white z-50 top-1/2 left-1/2 translate-[-50%] "
+          className="flex flex-col gap-4 sm:gap-7 fixed items-center p-5 w-70 sm:w-150 sm:px-25 sm:py-12 bg-white z-50 top-1/2 left-1/2 translate-[-50%] "
           onClick={(e) => {
             e.stopPropagation();
           }}
         >
           <button
-            className="absolute right-5 top-5 cursor-pointer"
+            className="absolute w-4 sm:w-fit right-5 top-5 cursor-pointer"
             onClick={() => setIsOpenModal(false)}
           >
             <img src="images/closeModal.svg" alt="закрыть окно" />
@@ -100,7 +100,7 @@ export default function Authorization() {
             <div className="flex justify-center">
               <a
                 href="/registration"
-                className="underline hover:text-[#E0BEA2]"
+                className="underline hover:text-[#E0BEA2] text-[14px] sm:text-[16px]"
               >
                 Нет аккаунта?
               </a>
