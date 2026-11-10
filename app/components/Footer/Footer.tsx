@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import Container from "../Container";
 import LinkFooter from "./LinkFooter";
 

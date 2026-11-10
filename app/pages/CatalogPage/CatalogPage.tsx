@@ -1,4 +1,4 @@
-import { filters } from "data/categories";
+import { filters } from "../../../data/categories";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { Bounce, toast, ToastContainer } from "react-toastify";
