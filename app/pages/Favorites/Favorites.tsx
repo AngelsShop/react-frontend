@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Bounce, ToastContainer } from "react-toastify";
 import Container from "~/components/Container";
 import ProductCard from "~/components/ProductCard";
-import { loadForCatalogPage } from "~/service/fetchCatalog";
 import {
   addFavorite,
   deleteFavorite,

@@ -1,6 +1,6 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import Button from "~/components/Button";
 import Input from "~/components/Input";
@@ -39,10 +39,12 @@ export default function Authorization() {
     if (res === 401) {
       const notify = () => toast.error("Неправильный пароль");
       notify();
+      return;
     }
     if (res === 404) {
       const notify = () => toast.error("Пользователь не найден");
       notify();
+      return;
     }
 
     const data = await getUser();

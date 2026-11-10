@@ -1,6 +1,6 @@
 import axios from "axios";
 import { toast, type ToastContentProps } from "react-toastify";
-import { SplitButtons } from "~/components/SplitButtons";
+import { NotifyToast } from "~/components/NotifyToast";
 
 export const api = axios.create({
   baseURL: "https://angels-shop.ru/api/v1",
@@ -36,7 +36,7 @@ api.interceptors.response.use(
   (error) => {
     if (axios.isAxiosError(error) && error.response?.status === 401) {
       const notify = () =>
-        toast(SplitButtons, {
+        toast(NotifyToast, {
           toastId: "auth-required",
           customProgressBar: true,
           pauseOnHover: true,

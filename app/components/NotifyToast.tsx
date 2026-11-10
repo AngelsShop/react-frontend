@@ -1,7 +1,7 @@
 import type { ToastContentProps } from "react-toastify";
 import "../style.css";
 
-export function SplitButtons({ isPaused, closeToast }: ToastContentProps) {
+export function NotifyToast({ isPaused, closeToast }: ToastContentProps) {
   return (
     <div className="w-full">
       <h3 className="text-[#E0BEA2]">Авторизация</h3>

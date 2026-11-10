@@ -1,7 +1,7 @@
 import { filters } from "../../../data/categories";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { Bounce, toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import Container from "~/components/Container";
 import DropDownList from "~/components/DropDownList";
 import ProductCard from "~/components/ProductCard";
@@ -22,10 +22,6 @@ export default function CatalogPage() {
         console.error(`${error}`);
       }
     })();
-  }, []);
-
-  useEffect(() => {
-    toast.dismiss();
   }, []);
 
   async function onFavorite(product: ProductCardProps) {
