@@ -8,10 +8,6 @@ import { addFavorite, deleteFavorite } from "~/service/fetchFavorites";
 import { getProductById } from "~/service/fetchProduct";
 import type { ProductCardProps, ProductInfoProps } from "~/types/Product";
 
-type Props = {
-  product: ProductInfoProps;
-};
-
 export default function ProductPage() {
   const { products, isLoading, refetch } = useProducts();
   const { productId } = useParams();
@@ -24,7 +20,7 @@ export default function ProductPage() {
         setProduct(data);
       }
     })();
-  }, []);
+  }, [productId]);
 
   async function onFavorite(product: ProductCardProps) {
     if (!product.isFavorite) {

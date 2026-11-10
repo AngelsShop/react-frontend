@@ -29,8 +29,8 @@ export default function ProductInfo({ product }: Props) {
     );
     if (currentVariant) {
       setProductDefault(currentVariant);
-    } else if (searchParams.get("color")) {
-      setSearchParams({ color: productDefault.color });
+    } else {
+      setProductDefault(product.variant);
     }
   }, [product, searchParams]);
 
