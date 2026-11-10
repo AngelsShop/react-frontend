@@ -56,22 +56,6 @@ export default function Authorization() {
 
   return createPortal(
     <dialog open={isOpenModal}>
-      <div>
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover={false}
-          theme="light"
-          transition={Bounce}
-        />
-      </div>
-
       <div
         className="bg-[#00000069] w-full h-full fixed z-20"
         onClick={() => setIsOpenModal(false)}

@@ -34,13 +34,16 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (axios.isAxiosError(error) && error.response?.status === 401) {
+    if (
+      axios.isAxiosError(error) &&
+      error.response?.status === 401 &&
+      error.config?.url === "/product/favorites/list"
+    ) {
       const notify = () =>
         toast(NotifyToast, {
           toastId: "auth-required",
-          customProgressBar: true,
-          pauseOnHover: true,
-          closeOnClick: true,
+          autoClose: false,
+          closeButton: true,
         });
       notify();
     }

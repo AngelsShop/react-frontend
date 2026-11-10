@@ -33,7 +33,7 @@ h3 {
 }
 
 .animate-progress {
-  animation: progress 8s linear forwards;
+  animation: progress 5s linear forwards;
 }
 
 @media (max-width: 640px) {
