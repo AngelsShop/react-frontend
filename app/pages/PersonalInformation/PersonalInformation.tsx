@@ -1,11 +1,11 @@
-import { useContext, useEffect, useEffectEvent, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Button from "~/components/Button";
 import Container from "~/components/Container";
 import Input from "~/components/Input";
 import { UserInfoContext } from "~/context/userInfo";
 import { deleteCookie } from "~/service/API";
-import { getUser, updateUserInfo } from "~/service/fetchUser";
+import { updateUserInfo } from "~/service/fetchUser";
 
 export default function PersonalInformation() {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import Button from "~/components/Button";

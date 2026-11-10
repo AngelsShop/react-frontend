@@ -1,4 +1,4 @@
-import { categories } from "data/categories";
+import { categories } from "../../../data/categories";
 import CategoryCard from "~/components/CategoryCard";
 import Container from "~/components/Container";
 import SwiperForHomePage from "~/components/SwiperForHomePage/SwiperForHomePage";
