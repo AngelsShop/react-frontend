@@ -35,7 +35,7 @@ export type ProductInfoProps = {
 };
 
 export type VariantType = {
-  size: number;
+  size: string;
   images: string[];
   price: number;
   isDefault: true;

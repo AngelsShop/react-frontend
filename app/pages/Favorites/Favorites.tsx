@@ -28,7 +28,10 @@ export default function Favorites() {
     } else {
       await deleteFavorite(product.variantId);
     }
-    await loadForCatalogPage();
+    const data = await loadListFavorites();
+    if (data?.value) {
+      setListFavorites(data.value.items);
+    }
   }
 
   return (
@@ -57,7 +60,7 @@ export default function Favorites() {
                   product={product}
                   onFavorite={() => onFavorite(product)}
                 ></ProductCard>
-              ))}{" "}
+              ))}
             </div>
           ) : (
             <div>Здесь пока пусто</div>

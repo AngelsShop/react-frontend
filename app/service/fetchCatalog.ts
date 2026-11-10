@@ -21,7 +21,13 @@ export function useProducts() {
     loadForCatalogPage();
   }, []);
 
-  return { products, isLoading, error, loadForCatalogPage };
+  return {
+    products,
+    isLoading,
+    error,
+    loadForCatalogPage,
+    refetch: loadForCatalogPage,
+  };
 }
 
 export async function loadFiltersCatalogPage() {

@@ -2,7 +2,6 @@ import { createSearchParams, Link, useNavigate } from "react-router";
 import ColorJacket from "./ColorJacket";
 import type { ProductCardProps } from "~/types/Product";
 import Favorite from "./Favorite";
-import { addFavorite } from "~/service/fetchFavorites";
 
 type Props = {
   product: ProductCardProps;
@@ -30,7 +29,7 @@ export default function ProductCard({ onFavorite, product }: Props) {
         <img className="w-full h-50" src={product.previewImage} alt="" />
       </Link>
       <div className="relative h-full justify-between flex flex-col items-center gap-1">
-        <p>1</p>
+        <p>{product.title}</p>
         <div className="flex flex-col items-center gap-1">
           <span className="font-bold">{`${product.price}`}</span>
           <span className="text-[#252525]/50">{product.sizes.join(" ")}</span>

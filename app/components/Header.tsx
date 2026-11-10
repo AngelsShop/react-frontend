@@ -55,7 +55,7 @@ export default function Header() {
       <Container>
         <div className="grid grid-cols-[1fr_auto_1fr] items-center py-4">
           <div>
-            <div className="flex gap-x-8 text-[#E0BEA2] max-sm:hidden">
+            <div className=" flex gap-x-8 text-[#E0BEA2] max-sm:hidden">
               <NavLink to="/" className="text-xl font-medium uppercase">
                 NEW
               </NavLink>

@@ -7,6 +7,9 @@ import type {
   OrderActionTypeProps,
   OrderInformationProps,
 } from "~/types/Components";
+import type { VariantType } from "~/types/Product";
+import { listProductsCart } from "~/service/fetchCart";
+import ProductCartCard from "~/components/ProductCartCard";
 
 function formReducer(
   state: OrderInformationProps,
@@ -34,8 +37,21 @@ const orderDetails: OrderInformationProps = {
   postOffice: "",
 };
 
+type propsListOrder = {
+  id: string;
+  product: VariantType;
+};
+
 export default function Cart() {
   const [state, dispatch] = useReducer(formReducer, orderDetails);
+  const [listOrder, setListOrder] = useState<propsListOrder[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const res = await listProductsCart();
+      setListOrder(res.items);
+    })();
+  }, []);
 
   function handleInputChange(field: keyof OrderInformationProps) {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,8 +68,17 @@ export default function Cart() {
       <section>
         <Container>
           <h3>Ваш заказ</h3>
-          <div>
-            <p>Что-то типа заказа</p>
+          <div className="flex flex-col gap-y-5">
+            {listOrder.length > 0 ? (
+              listOrder.map((product) => (
+                <ProductCartCard
+                  product={product.product}
+                  key={product.id}
+                ></ProductCartCard>
+              ))
+            ) : (
+              <span>Список пока пуст</span>
+            )}
           </div>
         </Container>
       </section>

@@ -26,7 +26,7 @@ export default function SwiperForHomePage({ categories }: CategoriesProps) {
         {categories.map((category) => (
           <SwiperSlide className="relative">
             <img src={category.image} alt={category.image} />
-            <span className="absolute text-white text-xl backdrop-blur-[5px]  flex justify-center py-2 bottom-0 bg-[#E0BEA2]/75 w-full">
+            <span className="absolute text-white text-xl  backdrop-blur-[5px]  flex justify-center py-2 bottom-0 bg-[#E0BEA2]/75 w-full">
               {category.title}
             </span>
           </SwiperSlide>

@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { productsDELETE } from "data/categories";
 import { useSearchParams } from "react-router";
 import { addFavorite } from "~/service/fetchFavorites";
+import { addProductsCart } from "~/service/fetchCart";
 
 type Props = {
   product: ProductInfoProps;
@@ -41,6 +42,10 @@ export default function ProductInfo({ product }: Props) {
     await addFavorite(productDefault.id);
   }
 
+  async function handleCartAdd(variantId: string) {
+    await addProductsCart(variantId);
+  }
+
   return (
     <section className="mt-28">
       <Container>
@@ -59,7 +64,12 @@ export default function ProductInfo({ product }: Props) {
             ></ColorJacket>
             <SelectInfo product={productDefault} />
             <div className="grid grid-cols-2 gap-5">
-              <Button variant="brown">В корзину</Button>
+              <Button
+                variant="brown"
+                onClick={() => handleCartAdd(productDefault.id)}
+              >
+                В корзину
+              </Button>
               <Button onClick={() => handleFavoriteAdd()} variant="white">
                 В избранное
               </Button>
