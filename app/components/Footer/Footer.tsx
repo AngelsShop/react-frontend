@@ -68,7 +68,10 @@ export default function Footer() {
                 <LinkFooter url="/" title="+7 (920) 772 69 69"></LinkFooter>
               </li>
               <li>
-                <LinkFooter url="/" title="info@yanki.com"></LinkFooter>
+                <LinkFooter
+                  url="https://t.me/lalaloppp"
+                  title="tg: @lalaloppp"
+                ></LinkFooter>
               </li>
             </Ul>
           </div>

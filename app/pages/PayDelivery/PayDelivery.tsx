@@ -6,7 +6,7 @@ export default function PayDelivery() {
       <Container>
         <div className="flex flex-col gap-5">
           <h3>Оплата и доставка</h3>
-          <div className="grid grid-cols-2 gap-10">
+          <div className="grid sm:grid-cols-2 gap-10">
             <div className="flex flex-col gap-2.5">
               <p>
                 Вы можете оплатить покупку одним из ниже перечисленных способов:
@@ -30,8 +30,8 @@ export default function PayDelivery() {
             </div>
           </div>
           <div className="flex flex-col gap-6 ">
-            <span>Процесс оформления заказа с помощью LIQPAY:</span>
-            <div className="flex items-center justify-around gap-14">
+            <span>Процесс оформления заказа с помощью карты Мир:</span>
+            <div className="flex max-sm:flex-col sm:items-center justify-around gap-x-14 gap-y-7">
               <div className="flex gap-1">
                 <img src="images/payDelivery/step1.svg" alt="" />
                 <p>Выбрать в корзине способ оплаты "Мир"</p>
