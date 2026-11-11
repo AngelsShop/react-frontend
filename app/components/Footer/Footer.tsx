@@ -50,15 +50,6 @@ export default function Footer() {
               <li>
                 <LinkFooter url="/favorites" title="Избранное"></LinkFooter>
               </li>
-              <li>
-                <LinkFooter url="/" title="Публичная оферта"></LinkFooter>
-              </li>
-              <li>
-                <LinkFooter
-                  url="/"
-                  title="Политика конфиденциальности"
-                ></LinkFooter>
-              </li>
             </Ul>
           </div>
           <div>
